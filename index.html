@@ -67,12 +67,17 @@
   }
 
   /* ---------- nav ---------- */
-  header{
-    position:sticky;top:0;z-index:100;
-    background:rgba(248,250,252,0.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-  }
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  min-height:90px;
+  display:flex;
+  align-items:center;
+  background:rgba(248,250,252,0.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
   nav{
     display:flex;align-items:center;justify-content:space-between;
     padding:20px 0;
