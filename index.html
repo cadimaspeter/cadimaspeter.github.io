@@ -67,6 +67,7 @@
   }
 
   /* ---------- nav ---------- */
+```css
 header{
   position:sticky;
   top:0;
@@ -78,26 +79,49 @@ header{
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--border);
 }
-  nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:20px 0;
-  }
-  .logo{
-    font-weight:800;
-    font-size:16px;
-    letter-spacing:.02em;
-    color:var(--navy);
-    display:flex;
-    align-items:center;
-    gap:12px;
-  }
-  .avatar{
-    width:36px;height:36px;
-    border-radius:50%;
-    background:var(--border);
-    border:1px solid #CBD5E1;
-    flex-shrink:0;
-  }
+
+nav{
+  width:100%;
+  display:flex;
+  align-items:center;
+  padding:20px 0;
+}
+
+/* Logo stays on the left */
+.logo{
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:.02em;
+  color:var(--navy);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* Avatar */
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--border);
+  border:1px solid #CBD5E1;
+  flex-shrink:0;
+}
+
+/* Navigation moves to the right */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-left:auto;
+}
+
+/* CTA stays at the far right */
+.nav-cta{
+  margin-left:30px;
+}
+```
+
   .nav-links{
     display:flex;gap:36px;
     font-size:14px;font-weight:600;
