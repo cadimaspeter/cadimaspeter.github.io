@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experts in Wellness — Case Study | Peter Cadimas</title>
+<meta name="description" content="A Health & Wellness content strategy case study by Peter Cadimas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1220;
+    --blue:#2563EB;
+    --sky:#38BDF8;
+    --bg:#F8FAFC;
+    --slate:#334155;
+    --white:#FFFFFF;
+    --border:#E2E8F0;
+    --max:1160px;
+    --content-max:780px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--bg);
+    color:var(--slate);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .mono{font-family:'DM Mono',monospace;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  .content{max-width:var(--content-max);margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.wrap,.content{padding:0 20px;}}
+
+  .eyebrow{
+    font-family:'DM Mono',monospace;
+    font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--blue);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:14px;height:1px;background:var(--blue);display:inline-block;}
+  .sq{width:6px;height:6px;background:var(--blue);display:inline-block;flex-shrink:0;}
+
+  /* nav */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(248,250,252,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;}
+  .logo{font-weight:800;font-size:16px;letter-spacing:.02em;color:var(--navy);display:flex;align-items:center;gap:12px;}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--border);border:1px solid #CBD5E1;flex-shrink:0;}
+  .back-link{
+    font-size:13.5px;font-weight:700;color:var(--navy);
+    display:flex;align-items:center;gap:6px;
+  }
+  .back-link:hover{color:var(--blue);}
+
+  /* hero */
+  .cs-hero{padding:90px 0 60px;border-bottom:1px solid var(--border);}
+  .cs-hero .content{max-width:var(--content-max);}
+  .cs-hero h1{
+    font-weight:800;
+    font-size:clamp(32px,5vw,54px);
+    line-height:1.1;letter-spacing:-.02em;
+    color:var(--navy);
+    margin:18px 0 20px;
+  }
+  .cs-hero .lede{font-size:17px;color:var(--slate);max-width:640px;}
+  .cs-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+  .cs-tag{
+    font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;
+    padding:6px 12px;border-radius:6px;
+    background:var(--white);border:1px solid var(--border);color:var(--slate);
+  }
+  .nda-note{
+    margin-top:28px;
+    font-size:13.5px;
+    color:var(--slate);
+    background:var(--white);
+    border:1px solid var(--border);
+    border-left:3px solid var(--blue);
+    border-radius:8px;
+    padding:14px 18px;
+  }
+
+  /* snapshot */
+  .snapshot{
+    max-width:var(--content-max);margin:44px auto 0;padding:0 32px;
+  }
+  @media (max-width:640px){.snapshot{padding:0 20px;}}
+  .snapshot-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    border:1px solid var(--border);border-radius:14px;overflow:hidden;
+    background:var(--border);gap:1px;
+  }
+  @media (max-width:760px){.snapshot-grid{grid-template-columns:repeat(2,1fr);}}
+  .snap-cell{background:var(--white);padding:20px 18px;}
+  .snap-cell .label{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;}
+  .snap-cell .val{font-size:14px;font-weight:700;color:var(--navy);}
+
+  /* content sections */
+  .cs-section{padding:64px 0;border-bottom:1px solid var(--border);}
+  .cs-section:last-of-type{border-bottom:none;}
+  .cs-section .content{max-width:var(--content-max);}
+  .cs-section .num{font-family:'DM Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:14px;display:block;}
+  .cs-section h2{
+    font-weight:700;font-size:clamp(24px,3.2vw,32px);
+    color:var(--navy);letter-spacing:-.01em;margin-bottom:22px;
+  }
+  .cs-section h3{
+    font-weight:700;font-size:18px;color:var(--navy);
+    margin:28px 0 10px;
+  }
+  .cs-section p{font-size:15.5px;color:var(--slate);margin-bottom:16px;}
+  .cs-section ul{margin:0 0 16px 0;padding-left:20px;}
+  .cs-section ul li{font-size:15.5px;color:var(--slate);margin-bottom:8px;}
+  .flow{
+    font-family:'DM Mono',monospace;font-size:13px;color:var(--navy);
+    background:var(--white);border:1px solid var(--border);border-radius:12px;
+    padding:20px;text-align:center;line-height:2.1;margin:20px 0;
+  }
+  .flow .arrow{color:var(--blue);}
+
+  /* audit cards */
+  .audit-card{
+    background:var(--white);border:1px solid var(--border);border-radius:14px;
+    padding:26px;margin-bottom:20px;
+  }
+  .audit-card h3{margin-top:0;}
+  .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;margin-top:16px;}
+  .kpi{border-top:1px solid var(--border);padding-top:10px;}
+  .kpi .k-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);}
+  .kpi .k-val{font-size:16px;font-weight:700;color:var(--navy);margin-top:4px;}
+
+  /* pillar table style */
+  .pillar-list{display:flex;flex-direction:column;gap:14px;}
+  .pillar-item{
+    background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 22px;
+  }
+  .pillar-item .p-name{font-weight:700;color:var(--navy);font-size:15px;margin-bottom:6px;}
+  .pillar-item .p-detail{font-size:14px;color:var(--slate);}
+  .pillar-item .p-detail strong{color:var(--navy);}
+
+  /* results */
+  .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media (max-width:640px){.results-grid{grid-template-columns:1fr;}}
+  .result-card{
+    background:var(--navy);color:var(--white);border-radius:14px;padding:24px;
+  }
+  .result-card h4{
+    font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--sky);margin-bottom:14px;
+  }
+  .result-card .r-row{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid rgba(255,255,255,0.12);font-size:14px;}
+  .result-card .r-row:first-of-type{border-top:none;}
+  .result-card .r-row .r-val{font-weight:700;color:var(--white);}
+
+  /* before after */
+  .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:640px){.ba-grid{grid-template-columns:1fr;}}
+  .ba-card{border:1px solid var(--border);border-radius:14px;padding:24px;background:var(--white);}
+  .ba-card.after{border-color:var(--blue);}
+  .ba-card h4{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:14px;}
+  .ba-card.after h4{color:var(--blue);}
+  .ba-card ul{padding-left:18px;margin:0;}
+  .ba-card li{font-size:14px;color:var(--slate);margin-bottom:8px;}
+
+  /* takeaways */
+  .takeaway{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 0;border-top:1px solid var(--border);
+  }
+  .takeaway:first-of-type{border-top:none;}
+  .takeaway .t-num{font-family:'DM Mono',monospace;color:var(--blue);font-size:14px;flex-shrink:0;width:26px;}
+  .takeaway p{margin:0;font-size:15.5px;color:var(--slate);}
+
+  /* visual placeholder callout */
+  .visual-slot{
+    border:1px dashed #CBD5E1;border-radius:12px;
+    background:var(--white);
+    padding:28px;text-align:center;margin:24px 0;
+  }
+  .visual-slot .v-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);}
+  .visual-slot .v-desc{font-size:13.5px;color:var(--slate);margin-top:8px;max-width:440px;margin-left:auto;margin-right:auto;}
+
+  /* footer cta */
+  .cs-footer-cta{
+    background:var(--navy);border-radius:24px;
+    max-width:var(--max);margin:0 auto 90px;padding:70px 40px;text-align:center;
+  }
+  @media (max-width:640px){.cs-footer-cta{padding:50px 24px;border-radius:16px;margin-bottom:50px;}}
+  .cs-footer-cta .eyebrow{justify-content:center;color:var(--sky);}
+  .cs-footer-cta .eyebrow::before{background:var(--sky);}
+  .cs-footer-cta h2{font-size:clamp(26px,4vw,38px);color:var(--white);margin:16px auto 28px;max-width:520px;font-weight:800;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:11px;
+    font-size:14px;font-weight:600;cursor:pointer;transition:all .2s ease;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--blue);color:var(--white);}
+  .btn-primary:hover{background:var(--sky);color:var(--navy);}
+  .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.3);color:var(--white);}
+  .btn-secondary:hover{background:var(--white);color:var(--navy);}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  footer.site-footer{padding:0 0 40px;}
+  .footer-inner{
+    max-width:var(--max);margin:0 auto;padding:0 32px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  }
+  .footer-inner .mono{font-size:12.5px;color:var(--slate);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="avatar"></span>PETER CADIMAS</div>
+    <a href="index.html#work" class="back-link">← BACK TO WORK</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="content">
+      <div class="eyebrow">CASE STUDY 01 / SOCIAL MEDIA &amp; CONTENT STRATEGY</div>
+      <h1>Experts in Wellness — building a connected content ecosystem.</h1>
+      <p class="lede">A six-month engagement turning four separately managed platforms into one strategic, searchable, and conversion-focused digital presence for a Health &amp; Wellness brand.</p>
+      <div class="cs-tags">
+        <span class="cs-tag">HEALTH &amp; WELLNESS</span>
+        <span class="cs-tag">INSTAGRAM</span>
+        <span class="cs-tag">FACEBOOK</span>
+        <span class="cs-tag">YOUTUBE</span>
+        <span class="cs-tag">LINKEDIN</span>
+        <span class="cs-tag">SQUARESPACE</span>
+      </div>
+      <div class="nda-note">Some assets in this case study are presented as illustrative samples due to client confidentiality. Strategy, process, and reported figures reflect real project work.</div>
+    </div>
+  </section>
+
+  <!-- SNAPSHOT -->
+  <div class="snapshot">
+    <div class="snapshot-grid">
+      <div class="snap-cell"><div class="label">Industry</div><div class="val">Health &amp; Wellness</div></div>
+      <div class="snap-cell"><div class="label">Platforms</div><div class="val">IG · FB · YT · LinkedIn</div></div>
+      <div class="snap-cell"><div class="label">Services</div><div class="val">Strategy, SEO/AEO/GEO, Email</div></div>
+      <div class="snap-cell"><div class="label">Duration</div><div class="val">6 Months</div></div>
+      <div class="snap-cell"><div class="label">Results</div><div class="val">Positive</div></div>
+    </div>
+  </div>
+
+  <!-- 01 OVERVIEW / CHALLENGE -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">01</span>
+      <h2>The Challenge</h2>
+      <p>Experts in Wellness had an existing digital footprint but hadn't yet connected it into a unified strategy. This was an opportunity to strengthen an already-established presence and build a more strategic content ecosystem around it.</p>
+      <ul>
+        <li>Inconsistent content publishing across platforms</li>
+        <li>No unified content strategy connecting Instagram, Facebook, YouTube, and LinkedIn</li>
+        <li>Untapped opportunity to improve social media discoverability</li>
+        <li>Content not yet optimized for search engines or AI-driven search</li>
+        <li>No clear, repeatable content pillar system</li>
+        <li>A gap between social content and website/blog content</li>
+        <li>Weak or inconsistent calls-to-action</li>
+        <li>Existing expertise not yet turned into repeatable, searchable content</li>
+        <li>No consistent system for tracking and demonstrating growth</li>
+      </ul>
+      <div class="visual-slot">
+        <div class="v-label">Suggested Visual</div>
+        <div class="v-desc">Before-state screenshots of each platform profile — shows the baseline the audit was based on.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PLATFORM AUDIT -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">02</span>
+      <h2>Platform Audit</h2>
+      <p>A full audit was conducted across all four platforms to establish a baseline and identify strategic gaps.</p>
+
+      <div class="audit-card">
+        <h3>Instagram</h3>
+        <p>Reviewed profile optimization, bio and positioning, content pillars, Reels, carousels, captions, hashtags/keywords, searchability, engagement, CTAs, and conversion opportunities.</p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="k-label">Followers</div><div class="k-val">44</div></div>
+          <div class="kpi"><div class="k-label">Reach</div><div class="k-val">1.1K</div></div>
+          <div class="kpi"><div class="k-label">Impressions</div><div class="k-val">49</div></div>
+          <div class="kpi"><div class="k-label">Engagement</div><div class="k-val">0%</div></div>
+          <div class="kpi"><div class="k-label">Profile Visits</div><div class="k-val">218</div></div>
+          <div class="kpi"><div class="k-label">Website Clicks</div><div class="k-val">0</div></div>
+        </div>
+      </div>
+
+      <div class="audit-card">
+        <h3>Facebook</h3>
+        <p>Reviewed page optimization, content consistency, cross-platform reposting, educational content, community engagement, link/website traffic, CTAs, and discoverability.</p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="k-label">Followers/Likes</div><div class="k-val">133</div></div>
+          <div class="kpi"><div class="k-label">Reach</div><div class="k-val">104</div></div>
+          <div class="kpi"><div class="k-label">Engagement</div><div class="k-val">1</div></div>
+          <div class="kpi"><div class="k-label">Link Clicks</div><div class="k-val">3</div></div>
+        </div>
+      </div>
+
+      <div class="audit-card">
+        <h3>YouTube</h3>
+        <p>Reviewed channel positioning, video topics, titles, descriptions, keywords, search optimization, educational content, video consistency, CTAs, and repurposing opportunities.</p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="k-label">Subscribers</div><div class="k-val">0</div></div>
+          <div class="kpi"><div class="k-label">Views</div><div class="k-val">0</div></div>
+        </div>
+      </div>
+
+      <div class="audit-card">
+        <h3>LinkedIn</h3>
+        <p>Reviewed profile/company positioning, educational content, thought leadership, professional audience fit, content formatting, searchability, engagement, and website traffic.</p>
+        <div class="kpi-row">
+          <div class="kpi"><div class="k-label">Followers</div><div class="k-val">1,219</div></div>
+          <div class="kpi"><div class="k-label">Impressions</div><div class="k-val">32</div></div>
+          <div class="kpi"><div class="k-label">Engagement</div><div class="k-val">0</div></div>
+          <div class="kpi"><div class="k-label">Website Clicks</div><div class="k-val">5</div></div>
+        </div>
+      </div>
+
+      <div class="visual-slot">
+        <div class="v-label">Suggested Visual</div>
+        <div class="v-desc">Analytics screenshots for each platform, matching the baseline numbers above.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SEO AEO GEO -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">03</span>
+      <h2>Strategic Optimization: SEO, AEO &amp; GEO</h2>
+      <p>Content was optimized across three overlapping layers of discoverability, treated as one connected strategy rather than separate tactics.</p>
+
+      <h3>SEO — Search Engine Optimization</h3>
+      <p>Addressed through keyword research, search-friendly topics, strategic keyword placement, blog optimization, meta titles and descriptions, image alt text, internal linking, and long-form educational content — aligning social content with search intent to reinforce website discoverability.</p>
+
+      <h3>AEO — Answer Engine Optimization</h3>
+      <p>Content was structured to increase its likelihood of surfacing in answer-based search — built around real audience questions, clear headings, concise answers, and FAQ-style formats, then repurposed into carousels, captions, blogs, and video scripts.</p>
+
+      <h3>GEO — Generative Engine Optimization</h3>
+      <p>Improved visibility within AI-powered and generative search through topic depth, consistent publishing, strong topical relevance, entity/brand consistency, and expertise-focused writing — with website and social content deliberately reinforcing the same core topics.</p>
+    </div>
+  </section>
+
+  <!-- 04 CONTENT STRATEGY -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">04</span>
+      <h2>Content Strategy</h2>
+      <p>A structured pillar system gave every piece of content a clear purpose and a clear home.</p>
+
+      <div class="pillar-list">
+        <div class="pillar-item"><div class="p-name">Education</div><div class="p-detail">Teach core wellness concepts · <strong>Goal:</strong> build authority</div></div>
+        <div class="pillar-item"><div class="p-name">Health &amp; Wellness Tips</div><div class="p-detail">Practical, everyday value · <strong>Goal:</strong> drive engagement</div></div>
+        <div class="pillar-item"><div class="p-name">Expert Insights</div><div class="p-detail">Showcase brand expertise · <strong>Goal:</strong> build credibility</div></div>
+        <div class="pillar-item"><div class="p-name">FAQs</div><div class="p-detail">Answer common questions · <strong>Goal:</strong> support AEO/GEO</div></div>
+        <div class="pillar-item"><div class="p-name">Myth vs. Fact</div><div class="p-detail">Correct misinformation · <strong>Goal:</strong> boost shares</div></div>
+        <div class="pillar-item"><div class="p-name">Services &amp; Conversion</div><div class="p-detail">Showcase offerings and drive action · <strong>Goal:</strong> conversion</div></div>
+      </div>
+
+      <p style="margin-top:24px;">Rather than producing separate content for every channel, each core topic was developed once and adapted across formats — Reels, carousels, long-form YouTube video, LinkedIn posts, blog articles, and newsletter content.</p>
+    </div>
+  </section>
+
+  <!-- 05 WEBSITE / BLOG -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">05</span>
+      <h2>Website &amp; Blog Management</h2>
+      <p><span class="mono" style="font-size:12px;color:var(--blue);">PLATFORM: SQUARESPACE</span></p>
+      <p>The website became an active part of the content ecosystem — consistent blog publishing, search-friendly topic planning, on-page SEO, internal linking, and a feedback loop where blog posts were repurposed into Reels and carousels, and social content drove traffic back to the site.</p>
+      <div class="flow">Social Media <span class="arrow">→</span> Blog / Website <span class="arrow">→</span> Further Content <span class="arrow">→</span> Conversion</div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="k-label">Organic Traffic Growth</div><div class="k-val">996</div></div>
+        <div class="kpi"><div class="k-label">Blog Views</div><div class="k-val">843</div></div>
+        <div class="kpi"><div class="k-label">Traffic From Social</div><div class="k-val">996</div></div>
+        <div class="kpi"><div class="k-label">Search Impressions</div><div class="k-val">23</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 AFFILIATE -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">06</span>
+      <h2>Affiliate Program Integration</h2>
+      <p>Affiliate content was woven into existing educational formats rather than run as standalone advertising, so recommendations felt like a continuation of value rather than an interruption.</p>
+      <div class="flow">Educational Content <span class="arrow">→</span> Audience Interest <span class="arrow">→</span> Relevant Recommendation <span class="arrow">→</span> Affiliate CTA <span class="arrow">→</span> Conversion</div>
+    </div>
+  </section>
+
+  <!-- 07 NEWSLETTER -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">07</span>
+      <h2>Newsletter Strategy &amp; CTAs</h2>
+      <p>Newsletters promoted content, drove blog traffic, nurtured the audience, and built service awareness — every send built around a clear next action.</p>
+      <div class="kpi-row">
+        <div class="kpi"><div class="k-label">Subscribers</div><div class="k-val">18K+</div></div>
+        <div class="kpi"><div class="k-label">Open Rate</div><div class="k-val">2.1%</div></div>
+        <div class="kpi"><div class="k-label">Click-Through Rate</div><div class="k-val">4.9%</div></div>
+        <div class="kpi"><div class="k-label">CTA Clicks</div><div class="k-val">6.2%</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 DISTRIBUTION SYSTEM -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">08</span>
+      <h2>Content Distribution &amp; Repurposing System</h2>
+      <p>Each core topic followed a consistent pipeline, extending its lifespan and reach across the full ecosystem:</p>
+      <div class="flow">
+        Core Topic <span class="arrow">→</span> Blog Article <span class="arrow">→</span> IG/FB Carousel <span class="arrow">→</span> IG Reel<br>
+        <span class="arrow">→</span> YouTube Video <span class="arrow">→</span> LinkedIn Post <span class="arrow">→</span> Newsletter <span class="arrow">→</span> CTA / Conversion
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 EXECUTION -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">09</span>
+      <h2>Execution</h2>
+      <ul>
+        <li>Conducted full platform audits across Instagram, Facebook, YouTube, and LinkedIn</li>
+        <li>Built a structured content calendar aligned to defined content pillars</li>
+        <li>Managed day-to-day publishing and community engagement</li>
+        <li>Wrote SEO- and AEO-aligned captions and blog copy</li>
+        <li>Produced and scheduled Reels and carousel content</li>
+        <li>Managed blog content on Squarespace, including topic planning and on-page SEO</li>
+        <li>Integrated affiliate recommendations into relevant educational content</li>
+        <li>Wrote and optimized newsletter content and CTAs</li>
+        <li>Monitored analytics and delivered ongoing performance reporting</li>
+        <li>Adjusted strategy and content based on performance data</li>
+      </ul>
+      <div class="visual-slot">
+        <div class="v-label">Suggested Visual</div>
+        <div class="v-desc">Content calendar screenshot — demonstrates the planning system behind the execution.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 RESULTS -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">10</span>
+      <h2>Results &amp; Growth</h2>
+      <div class="results-grid">
+        <div class="result-card">
+          <h4>Instagram</h4>
+          <div class="r-row"><span>Reach</span><span class="r-val">52.8K+</span></div>
+          <div class="r-row"><span>Engagement</span><span class="r-val">12.9K+</span></div>
+          <div class="r-row"><span>Followers</span><span class="r-val">+372.7%</span></div>
+          <div class="r-row"><span>Profile Visits</span><span class="r-val">+603.7%</span></div>
+        </div>
+        <div class="result-card">
+          <h4>Facebook</h4>
+          <div class="r-row"><span>Reach</span><span class="r-val">10.8K+</span></div>
+          <div class="r-row"><span>Engagement</span><span class="r-val">7.6K+</span></div>
+          <div class="r-row"><span>Followers</span><span class="r-val">+60.2%</span></div>
+        </div>
+        <div class="result-card">
+          <h4>YouTube</h4>
+          <div class="r-row"><span>Views</span><span class="r-val">+793.2%</span></div>
+          <div class="r-row"><span>Subscribers</span><span class="r-val">6</span></div>
+          <div class="r-row"><span>Watch Time</span><span class="r-val">+804.4%</span></div>
+        </div>
+        <div class="result-card">
+          <h4>LinkedIn</h4>
+          <div class="r-row"><span>Impressions</span><span class="r-val">+340.2%</span></div>
+          <div class="r-row"><span>Engagement</span><span class="r-val">+67.4%</span></div>
+          <div class="r-row"><span>Followers</span><span class="r-val">2,229</span></div>
+        </div>
+        <div class="result-card">
+          <h4>Website</h4>
+          <div class="r-row"><span>Organic Traffic</span><span class="r-val">3.4K</span></div>
+          <div class="r-row"><span>Blog Traffic</span><span class="r-val">+402.2%</span></div>
+          <div class="r-row"><span>Sessions</span><span class="r-val">5.2K</span></div>
+          <div class="r-row"><span>Social Referral</span><span class="r-val">1.2K</span></div>
+        </div>
+        <div class="result-card">
+          <h4>Newsletter</h4>
+          <div class="r-row"><span>Subscribers</span><span class="r-val">13K+</span></div>
+          <div class="r-row"><span>Open Rate</span><span class="r-val">54.2%</span></div>
+          <div class="r-row"><span>CTR</span><span class="r-val">12.3%</span></div>
+          <div class="r-row"><span>CTA Clicks</span><span class="r-val">45.9%</span></div>
+        </div>
+      </div>
+      <p style="margin-top:24px;">Growth wasn't concentrated on a single platform — it moved across the entire ecosystem at once. Instagram and LinkedIn engagement climbed alongside blog and newsletter performance, the clearest sign the repurposing system worked as intended: one topic, developed once, compounding its return across every channel it touched.</p>
+    </div>
+  </section>
+
+  <!-- 11 BEFORE AFTER -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">11</span>
+      <h2>Before vs. After</h2>
+      <div class="ba-grid">
+        <div class="ba-card">
+          <h4>Before</h4>
+          <ul>
+            <li>Inconsistent publishing, no shared calendar</li>
+            <li>Each platform optimized independently</li>
+            <li>Limited SEO/AEO/GEO structure</li>
+            <li>No repeatable pillar system</li>
+            <li>Website and social operating separately</li>
+            <li>Inconsistent or absent CTAs</li>
+            <li>Affiliate program disconnected from content</li>
+          </ul>
+        </div>
+        <div class="ba-card after">
+          <h4>After</h4>
+          <ul>
+            <li>Consistent, repeatable content system</li>
+            <li>Stronger, more intentional platform presence</li>
+            <li>Content structured for search, AEO, and GEO</li>
+            <li>Defined content pillars driving production</li>
+            <li>Website and social operating as one ecosystem</li>
+            <li>Strategic, purposeful CTAs across sends and posts</li>
+            <li>Affiliate recommendations naturally integrated</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 TAKEAWAYS -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">12</span>
+      <h2>Key Takeaways</h2>
+      <div class="takeaway"><span class="t-num mono">01</span><p>Consistency creates a stronger foundation for digital growth than any single viral post.</p></div>
+      <div class="takeaway"><span class="t-num mono">02</span><p>Social media performs better when it's connected to a larger content ecosystem, not managed in isolation.</p></div>
+      <div class="takeaway"><span class="t-num mono">03</span><p>SEO, AEO, and GEO should be built into content from the start — not layered on afterward.</p></div>
+      <div class="takeaway"><span class="t-num mono">04</span><p>Educational content can build authority while still supporting conversion goals.</p></div>
+      <div class="takeaway"><span class="t-num mono">05</span><p>Strong, specific CTAs are what turn audience attention into measurable business action.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:20px;">
+    <div class="cs-footer-cta">
+      <div class="eyebrow">Let's work together</div>
+      <h2>Have a similar project in mind? Let's build your content ecosystem.</h2>
+      <div class="cta-actions">
+        <a href="index.html#contact" class="btn btn-primary">GET IN TOUCH →</a>
+        <a href="index.html#work" class="btn btn-secondary">VIEW MORE WORK</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="mono">© 2026 PETER CADIMAS</div>
+    <a href="index.html" class="back-link">← BACK TO PORTFOLIO</a>
+  </div>
+</footer>
+
+</body>
+</html>
