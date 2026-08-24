@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lifestyle Email Campaign Rebuild — Case Study | Peter Cadimas</title>
+
+<meta name="description" content="A Lifestyle Email Marketing case study by Peter Cadimas focused on campaign rebuilding, weekly consistency, audience engagement, CTA optimization, and conversion.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#0B1220;
+    --blue:#2563EB;
+    --sky:#38BDF8;
+    --bg:#F8FAFC;
+    --slate:#334155;
+    --white:#FFFFFF;
+    --border:#E2E8F0;
+    --max:1160px;
+    --content-max:780px;
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--bg);
+    color:var(--slate);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
+
+  ul{
+    list-style:none;
+  }
+
+  img{
+    max-width:100%;
+    display:block;
+  }
+
+  .mono{
+    font-family:'DM Mono',monospace;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .content{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media(max-width:640px){
+    .wrap,
+    .content{
+      padding:0 20px;
+    }
+  }
+
+  /* ---------- utility ---------- */
+
+  .eyebrow{
+    font-family:'DM Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .eyebrow::before{
+    content:"";
+    width:14px;
+    height:1px;
+    background:var(--blue);
+    display:inline-block;
+  }
+
+  /* ---------- nav ---------- */
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    min-height:90px;
+    display:flex;
+    align-items:center;
+    background:rgba(248,250,252,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+
+  nav{
+    width:100%;
+    display:flex;
+    align-items:center;
+    padding:20px 0;
+  }
+
+  .logo{
+    font-weight:800;
+    font-size:16px;
+    letter-spacing:.02em;
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .avatar{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:var(--border);
+    border:1px solid #CBD5E1;
+    flex-shrink:0;
+  }
+
+  .back-link{
+    margin-left:auto;
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:color .2s;
+  }
+
+  .back-link:hover{
+    color:var(--blue);
+  }
+
+  /* ---------- hero ---------- */
+
+  .cs-hero{
+    padding:120px 0 100px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+
+  .cs-hero::before{
+    content:"";
+    position:absolute;
+    top:-200px;
+    right:-200px;
+    width:600px;
+    height:600px;
+    background:radial-gradient(
+      circle,
+      rgba(37,99,235,.10) 0%,
+      rgba(56,189,248,0) 70%
+    );
+    pointer-events:none;
+  }
+
+  .cs-hero .content{
+    max-width:var(--content-max);
+    position:relative;
+    z-index:1;
+  }
+
+  .cs-hero h1{
+    font-weight:800;
+    font-size:clamp(38px,5vw,54px);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    color:var(--navy);
+    margin:22px 0;
+  }
+
+  .cs-hero .lede{
+    font-size:18px;
+    color:var(--slate);
+    max-width:650px;
+  }
+
+  .cs-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:32px;
+  }
+
+  .cs-tag{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.04em;
+    padding:6px 12px;
+    border-radius:6px;
+    background:var(--white);
+    border:1px solid var(--border);
+    color:var(--slate);
+  }
+
+  .nda-note{
+    margin-top:32px;
+    font-size:13.5px;
+    line-height:1.65;
+    color:var(--slate);
+    background:var(--white);
+    border:1px solid var(--border);
+    border-left:3px solid var(--blue);
+    border-radius:8px;
+    padding:18px 20px;
+  }
+
+  .nda-note strong{
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  /* ---------- snapshot ---------- */
+
+  .snapshot{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:0 32px;
+    transform:translateY(-1px);
+  }
+
+  @media(max-width:640px){
+    .snapshot{
+      padding:0 20px;
+    }
+  }
+
+  .snapshot-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--border);
+    gap:1px;
+    box-shadow:0 16px 40px -30px rgba(11,18,32,.15);
+  }
+
+  @media(max-width:760px){
+    .snapshot-grid{
+      grid-template-columns:repeat(2,1fr);
+    }
+  }
+
+  .snap-cell{
+    background:var(--white);
+    padding:20px 18px;
+  }
+
+  .snap-cell .label{
+    font-family:'DM Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+
+  .snap-cell .val{
+    font-size:14px;
+    font-weight:700;
+    color:var(--navy);
+  }
+
+  /* ---------- sections ---------- */
+
+  .cs-section{
+    padding:110px 0;
+    border-bottom:1px solid var(--border);
+  }
+
+  @media(max-width:760px){
+    .cs-section{
+      padding:70px 0;
+    }
+  }
+
+  .cs-section:last-of-type{
+    border-bottom:none;
+  }
+
+  .cs-section .content{
+    max-width:var(--content-max);
+  }
+
+  .cs-section .num{
+    font-family:'DM Mono',monospace;
+    font-size:12px;
+    color:var(--blue);
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .cs-section h2{
+    font-weight:700;
+    font-size:clamp(30px,4vw,46px);
+    line-height:1.15;
+    color:var(--navy);
+    letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+
+  .cs-section h3{
+    font-weight:700;
+    font-size:19px;
+    line-height:1.3;
+    color:var(--navy);
+    margin:32px 0 10px;
+  }
+
+  .cs-section p{
+    font-size:15.5px;
+    color:var(--slate);
+    margin-bottom:18px;
+  }
+
+  .cs-section ul{
+    margin:0 0 20px;
+    padding-left:20px;
+    list-style:disc;
+  }
+
+  .cs-section ul li{
+    font-size:15.5px;
+    color:var(--slate);
+    margin-bottom:9px;
+  }
+
+  /* ---------- quote ---------- */
+
+  .strategy-quote{
+    background:var(--navy);
+    color:var(--white);
+    border-radius:14px;
+    padding:30px;
+    margin:28px 0;
+  }
+
+  .strategy-quote .quote-label{
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin-bottom:14px;
+  }
+
+  .strategy-quote p{
+    color:var(--white);
+    font-size:20px;
+    line-height:1.45;
+    font-weight:600;
+    margin:0;
+  }
+
+  /* ---------- flow ---------- */
+
+  .flow{
+    font-family:'DM Mono',monospace;
+    font-size:13px;
+    color:var(--navy);
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    text-align:center;
+    line-height:2.1;
+    margin:24px 0;
+  }
+
+  .flow .arrow{
+    color:var(--blue);
+  }
+
+  /* ---------- cards ---------- */
+
+  .audit-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    margin-bottom:20px;
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      border-color .2s ease;
+  }
+
+  .audit-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px -28px rgba(11,18,32,.18);
+    border-color:#CBD5E1;
+  }
+
+  .audit-card h3{
+    margin-top:0;
+  }
+
+  /* ---------- KPI ---------- */
+
+  .kpi-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+
+  .kpi{
+    border-top:1px solid var(--border);
+    padding-top:11px;
+  }
+
+  .kpi .k-label{
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+
+  .kpi .k-val{
+    font-size:16px;
+    font-weight:700;
+    color:var(--navy);
+    margin-top:4px;
+  }
+
+  /* ---------- pillar list ---------- */
+
+  .pillar-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .pillar-item{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      border-color .2s ease;
+  }
+
+  .pillar-item:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px -28px rgba(11,18,32,.16);
+    border-color:#CBD5E1;
+  }
+
+  .pillar-item .p-name{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:6px;
+  }
+
+  .pillar-item .p-detail{
+    font-size:14px;
+    color:var(--slate);
+  }
+
+  .pillar-item .p-detail strong{
+    color:var(--navy);
+  }
+
+  /* ---------- results ---------- */
+
+  .results-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+
+  @media(max-width:640px){
+    .results-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .result-card{
+    background:var(--navy);
+    color:var(--white);
+    border-radius:14px;
+    padding:28px;
+  }
+
+  .result-card.primary{
+    grid-column:span 2;
+  }
+
+  @media(max-width:640px){
+    .result-card.primary{
+      grid-column:span 1;
+    }
+  }
+
+  .result-card h4{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin-bottom:14px;
+  }
+
+  .result-card .big-number{
+    font-size:clamp(42px,7vw,64px);
+    line-height:1;
+    font-weight:800;
+    color:var(--white);
+    letter-spacing:-.03em;
+    margin:6px 0 10px;
+  }
+
+  .result-card .result-description{
+    font-size:14px;
+    line-height:1.6;
+    color:#CBD5E1;
+    margin:0;
+  }
+
+  .result-card .r-row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-top:1px solid rgba(255,255,255,.12);
+    font-size:14px;
+    gap:20px;
+  }
+
+  .result-card .r-row:first-of-type{
+    border-top:none;
+  }
+
+  .result-card .r-row .r-val{
+    font-weight:700;
+    color:var(--white);
+    text-align:right;
+  }
+
+  /* ---------- before after ---------- */
+
+  .ba-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+
+  @media(max-width:640px){
+    .ba-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .ba-card{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:26px;
+    background:var(--white);
+  }
+
+  .ba-card.after{
+    border-color:var(--blue);
+  }
+
+  .ba-card h4{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:14px;
+  }
+
+  .ba-card.after h4{
+    color:var(--blue);
+  }
+
+  .ba-card ul{
+    padding-left:18px;
+    margin:0;
+    list-style:disc;
+  }
+
+  .ba-card li{
+    font-size:14px;
+    color:var(--slate);
+    margin-bottom:9px;
+  }
+
+  /* ---------- takeaways ---------- */
+
+  .takeaway{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:20px 0;
+    border-top:1px solid var(--border);
+  }
+
+  .takeaway:first-of-type{
+    border-top:none;
+  }
+
+  .takeaway .t-num{
+    font-family:'DM Mono',monospace;
+    color:var(--blue);
+    font-size:14px;
+    flex-shrink:0;
+    width:26px;
+  }
+
+  .takeaway p{
+    margin:0;
+    font-size:15.5px;
+    color:var(--slate);
+  }
+
+  /* ---------- visual placeholder ---------- */
+
+  .visual-slot{
+    border:1px dashed #CBD5E1;
+    border-radius:12px;
+    background:var(--white);
+    padding:30px;
+    text-align:center;
+    margin:28px 0 0;
+  }
+
+  .visual-slot .v-label{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+
+  .visual-slot .v-desc{
+    font-size:13.5px;
+    color:var(--slate);
+    margin-top:8px;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  /* ---------- footer CTA ---------- */
+
+  .cs-footer-section{
+    padding:20px 0 110px;
+  }
+
+  @media(max-width:760px){
+    .cs-footer-section{
+      padding:10px 0 70px;
+    }
+  }
+
+  .cs-footer-cta{
+    background:var(--navy);
+    border-radius:28px;
+    max-width:var(--max);
+    margin:0 auto;
+    padding:90px 60px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .cs-footer-cta::before{
+    content:"";
+    position:absolute;
+    bottom:-150px;
+    left:50%;
+    transform:translateX(-50%);
+    width:500px;
+    height:400px;
+    background:radial-gradient(
+      circle,
+      rgba(37,99,235,.25),
+      rgba(56,189,248,0) 70%
+    );
+  }
+
+  @media(max-width:760px){
+    .cs-footer-cta{
+      padding:60px 28px;
+      border-radius:20px;
+    }
+  }
+
+  .cs-footer-cta .inner{
+    position:relative;
+    z-index:1;
+  }
+
+  .cs-footer-cta .eyebrow{
+    justify-content:center;
+    color:var(--sky);
+  }
+
+  .cs-footer-cta .eyebrow::before{
+    background:var(--sky);
+  }
+
+  .cs-footer-cta h2{
+    font-size:clamp(30px,5vw,52px);
+    line-height:1.1;
+    color:var(--white);
+    margin:20px auto 28px;
+    max-width:640px;
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:11px;
+    font-size:14px;
+    font-weight:600;
+    font-family:'Manrope',sans-serif;
+    cursor:pointer;
+    transition:all .2s ease;
+    border:1px solid transparent;
+  }
+
+  .btn-primary{
+    background:var(--blue);
+    color:var(--white);
+  }
+
+  .btn-primary:hover{
+    background:var(--sky);
+    color:var(--navy);
+  }
+
+  .btn-secondary{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.3);
+    color:var(--white);
+  }
+
+  .btn-secondary:hover{
+    background:var(--white);
+    color:var(--navy);
+  }
+
+  .cta-actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer.site-footer{
+    padding:0 0 40px;
+  }
+
+  .footer-inner{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+
+  .footer-inner .mono{
+    font-size:12.5px;
+    color:var(--slate);
+  }
+
+  @media(max-width:640px){
+    .footer-inner{
+      padding:0 20px;
+    }
+  }
+
+  /* ---------- focus ---------- */
+
+  a:focus-visible,
+  button:focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- reduced motion ---------- */
+
+  @media(prefers-reduced-motion:reduce){
+    html{
+      scroll-behavior:auto;
+    }
+
+    .audit-card,
+    .pillar-item{
+      transition:none;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">
+      <img src="PeterCadimasHeadshot.png" class="avatar" alt="Peter Cadimas">
+      PETER CADIMAS
+    </div>
+
+    <a href="index.html#work" class="back-link">
+      ← BACK TO WORK
+    </a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- =========================================================
+       HERO
+  ========================================================== -->
+
+  <section class="cs-hero">
+    <div class="content">
+
+      <div class="eyebrow">
+        CASE STUDY 02 / EMAIL MARKETING &amp; CAMPAIGN REBUILD
+      </div>
+
+      <h1>
+        Lifestyle Email Campaign Rebuild — turning email into a consistent growth system.
+      </h1>
+
+      <p class="lede">
+        A strategic email marketing rebuild focused on establishing a reliable
+        weekly publishing rhythm, strengthening campaign structure, optimizing
+        calls-to-action, and creating a repeatable system designed to improve
+        audience engagement and conversion.
+      </p>
+
+      <div class="cs-tags">
+        <span class="cs-tag">LIFESTYLE</span>
+        <span class="cs-tag">EMAIL MARKETING</span>
+        <span class="cs-tag">CAMPAIGN REBUILD</span>
+        <span class="cs-tag">AUDIENCE ENGAGEMENT</span>
+        <span class="cs-tag">CTA OPTIMIZATION</span>
+        <span class="cs-tag">CONVERSION</span>
+      </div>
+
+      <div class="nda-note">
+        <strong>Client Confidentiality Notice</strong><br>
+        Due to client confidentiality, identifying brand information and selected
+        campaign assets have been hidden or anonymized in this case study.
+        The strategy, execution framework, and confirmed performance results
+        presented reflect the work delivered.
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       PROJECT SNAPSHOT
+  ========================================================== -->
+
+  <div class="snapshot">
+
+    <div class="snapshot-grid">
+
+      <div class="snap-cell">
+        <div class="label">Industry</div>
+        <div class="val">Lifestyle</div>
+      </div>
+
+      <div class="snap-cell">
+        <div class="label">Channel</div>
+        <div class="val">Email Marketing</div>
+      </div>
+
+      <div class="snap-cell">
+        <div class="label">Frequency</div>
+        <div class="val">Weekly</div>
+      </div>
+
+      <div class="snap-cell">
+        <div class="label">Publishing</div>
+        <div class="val">Every Thursday</div>
+      </div>
+
+      <div class="snap-cell">
+        <div class="label">Focus</div>
+        <div class="val">Engagement · Conversion</div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       01 OVERVIEW
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">01</span>
+
+      <h2>
+        Overview
+      </h2>
+
+      <p>
+        The Lifestyle Email Campaign Rebuild was designed as a strategic
+        optimization initiative rather than a simple email-sending task.
+        The project focused on rebuilding the campaign around a consistent
+        weekly communication system, with a deliberate commitment to publishing
+        an email every Thursday.
+      </p>
+
+      <p>
+        The objective was to transform email into a dependable marketing asset:
+        one that consistently reaches the audience, provides relevant value,
+        creates clear opportunities for action, and generates measurable data
+        that can be used to improve future campaigns.
+      </p>
+
+      <div class="audit-card">
+
+        <h3>
+          Project Snapshot
+        </h3>
+
+        <div class="kpi-row">
+
+          <div class="kpi">
+            <div class="k-label">Industry</div>
+            <div class="k-val">Lifestyle</div>
+          </div>
+
+          <div class="kpi">
+            <div class="k-label">Channel</div>
+            <div class="k-val">Email Marketing</div>
+          </div>
+
+          <div class="kpi">
+            <div class="k-label">Frequency</div>
+            <div class="k-val">Weekly</div>
+          </div>
+
+          <div class="kpi">
+            <div class="k-label">Publishing Day</div>
+            <div class="k-val">Thursday</div>
+          </div>
+
+          <div class="kpi">
+            <div class="k-label">Click Rate Growth</div>
+            <div class="k-val">+304.5%</div>
+          </div>
+
+          <div class="kpi">
+            <div class="k-label">Conversion Rate</div>
+            <div class="k-val">23.3%</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          Hero screenshot of a representative weekly email. The visual should
+          immediately communicate the campaign's polished structure, branding,
+          hierarchy, and CTA design.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       02 CHALLENGE
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">02</span>
+
+      <h2>
+        The Challenge
+      </h2>
+
+      <p>
+        The opportunity was not simply to send more emails. The larger challenge
+        was to create a reliable communication rhythm and rebuild email as a
+        repeatable marketing channel.
+      </p>
+
+      <p>
+        Without a predictable publishing cadence, audience communication can
+        become inconsistent and valuable opportunities to engage, educate,
+        promote, and convert can be missed.
+      </p>
+
+      <div class="strategy-quote">
+
+        <div class="quote-label">
+          Strategic Question
+        </div>
+
+        <p>
+          “How can a consistent weekly email system turn an underutilized
+          audience channel into a reliable source of engagement and conversions?”
+        </p>
+
+      </div>
+
+      <ul>
+        <li>Establish a consistent weekly email communication rhythm</li>
+        <li>Create a predictable publishing schedule for the audience</li>
+        <li>Rebuild the campaign structure around clearer content hierarchy</li>
+        <li>Strengthen calls-to-action and the path toward action</li>
+        <li>Create more opportunities for audience engagement</li>
+        <li>Improve click behavior through clearer content and CTA alignment</li>
+        <li>Develop a repeatable campaign production workflow</li>
+        <li>Use campaign data to guide future optimization</li>
+        <li>Turn email from an occasional communication channel into a consistent marketing asset</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       03 CAMPAIGN AUDIT
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">03</span>
+
+      <h2>
+        Campaign Audit
+      </h2>
+
+      <p>
+        Before rebuilding the campaign, the existing email experience was
+        evaluated across frequency, structure, audience journey, and conversion
+        opportunities. The purpose of the audit was to identify where the
+        existing system could become more consistent, clearer, and more
+        conversion-oriented.
+      </p>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Email Frequency
+        </h3>
+
+        <p>
+          The campaign's previous publishing rhythm was reviewed to identify
+          gaps in communication and opportunities created by establishing a
+          predictable weekly cadence.
+        </p>
+
+        <ul>
+          <li>Previous sending consistency: <strong>[FREQUENCY]</strong></li>
+          <li>Previous campaign gaps: <strong>[NUMBER]</strong></li>
+          <li>Average campaigns per month: <strong>[NUMBER]</strong></li>
+          <li>Opportunity: establish a fixed Thursday publishing schedule</li>
+        </ul>
+
+      </div>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Email Structure
+        </h3>
+
+        <p>
+          Campaign structure was evaluated to determine how quickly readers
+          could understand the message, find the value, and identify the next
+          action.
+        </p>
+
+        <ul>
+          <li>Subject-line clarity and relevance</li>
+          <li>Opening message and initial value proposition</li>
+          <li>Content hierarchy and scannability</li>
+          <li>Visual organization</li>
+          <li>Link placement and relevance</li>
+          <li>CTA clarity and positioning</li>
+          <li>Balance between educational, lifestyle, and promotional content</li>
+        </ul>
+
+      </div>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Audience Journey
+        </h3>
+
+        <p>
+          The email was evaluated as a complete user journey rather than an
+          isolated piece of content.
+        </p>
+
+        <div class="flow">
+
+          Open
+          <span class="arrow">→</span>
+          Read
+          <span class="arrow">→</span>
+          Click
+          <span class="arrow">→</span>
+          Take Action
+
+        </div>
+
+        <p>
+          Each stage represents an opportunity to remove friction and make the
+          intended action easier to understand.
+        </p>
+
+      </div>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Conversion Opportunities
+        </h3>
+
+        <p>
+          Conversion-focused elements were reviewed to determine whether the
+          campaign provided a clear and relevant next step.
+        </p>
+
+        <ul>
+          <li>CTA placement</li>
+          <li>CTA clarity</li>
+          <li>Number of competing actions</li>
+          <li>Relevance of the CTA to the email content</li>
+          <li>Connection between email and landing page</li>
+          <li>Potential friction in the conversion journey</li>
+        </ul>
+
+      </div>
+
+
+      <div class="kpi-row">
+
+        <div class="kpi">
+          <div class="k-label">Previous Click Rate</div>
+          <div class="k-val">[METRIC]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Previous Conversion Rate</div>
+          <div class="k-val">[METRIC]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Open Rate</div>
+          <div class="k-val">[METRIC]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Average Clicks</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Previous Frequency</div>
+          <div class="k-val">[FREQUENCY]</div>
+        </div>
+
+      </div>
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          Before-state email screenshot or campaign-builder screenshot. Use
+          annotations to highlight inconsistent structure, CTA placement,
+          hierarchy, or publishing gaps where appropriate.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       04 REBUILD STRATEGY
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">04</span>
+
+      <h2>
+        The Rebuild Strategy
+      </h2>
+
+      <p>
+        The central strategic change was consistency. Instead of treating each
+        email as an isolated campaign, the rebuild established a recurring
+        weekly system anchored around one fixed publishing day.
+      </p>
+
+      <div class="strategy-quote">
+
+        <div class="quote-label">
+          The New Campaign Rhythm
+        </div>
+
+        <p>
+          Every Thursday = Email Campaign
+        </p>
+
+      </div>
+
+      <p>
+        Thursday became more than a scheduling preference. It became an
+        operational anchor for content planning, production, review, scheduling,
+        launch, and performance analysis.
+      </p>
+
+      <div class="pillar-list">
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Audience Expectation
+          </div>
+
+          <div class="p-detail">
+            A predictable publishing day creates a recognizable communication
+            rhythm and gives the audience a consistent brand touchpoint.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Operational Consistency
+          </div>
+
+          <div class="p-detail">
+            A fixed deadline creates a repeatable internal workflow instead of
+            requiring each campaign to be rebuilt from scratch.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            More Engagement Opportunities
+          </div>
+
+          <div class="p-detail">
+            Consistent communication creates more opportunities for readers to
+            engage with content, links, offers, and brand messaging.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            More Optimization Opportunities
+          </div>
+
+          <div class="p-detail">
+            More campaigns generate more performance data, creating a stronger
+            foundation for testing and refinement.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       05 CONTENT STRATEGY
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">05</span>
+
+      <h2>
+        Email Content Strategy
+      </h2>
+
+      <p>
+        Each weekly email was structured to provide audience value while
+        supporting a clear business objective. The strategy avoided turning
+        every send into a hard promotion and instead created a balance between
+        usefulness, relevance, engagement, and action.
+      </p>
+
+      <div class="pillar-list">
+
+        <div class="pillar-item">
+          <div class="p-name">Lifestyle Insights</div>
+          <div class="p-detail">
+            Relevant perspectives and ideas designed to maintain audience
+            interest and reinforce the brand's lifestyle positioning.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Educational Content</div>
+          <div class="p-detail">
+            Helpful information that gives the audience a reason to read,
+            learn, and return.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Helpful Tips</div>
+          <div class="p-detail">
+            Practical, immediately useful content designed to encourage
+            engagement and build ongoing value.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Featured Content</div>
+          <div class="p-detail">
+            Strategic promotion of relevant articles, resources, stories,
+            products, or services.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Community-Focused Content</div>
+          <div class="p-detail">
+            Content designed to strengthen the relationship between the brand
+            and its audience.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Conversion-Focused Content</div>
+          <div class="p-detail">
+            Purposeful campaigns where the content naturally leads toward a
+            specific next action.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Seasonal &amp; Timely Topics</div>
+          <div class="p-detail">
+            Timely messaging used to maintain relevance and create additional
+            reasons for the audience to engage.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flow">
+
+        Value
+        <span class="arrow">→</span>
+        Relevance
+        <span class="arrow">→</span>
+        Engagement
+        <span class="arrow">→</span>
+        Action
+
+      </div>
+
+      <p>
+        The goal was not to make every email promotional. The goal was to make
+        every email useful enough to earn attention while giving the audience a
+        logical next step when action was appropriate.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       06 EMAIL STRUCTURE & UX
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">06</span>
+
+      <h2>
+        Email Structure &amp; UX Optimization
+      </h2>
+
+      <p>
+        The campaign rebuild treated each email as a user experience. The
+        objective was to make the message easy to understand, easy to scan,
+        and easy to act on.
+      </p>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Subject Line
+        </h3>
+
+        <p>
+          Subject lines were treated as the first conversion point of the email.
+          Messaging focused on clarity, relevance, audience interest, and
+          appropriate curiosity without unnecessary complexity.
+        </p>
+
+      </div>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Opening
+        </h3>
+
+        <p>
+          The opening was designed to quickly establish what the email was
+          about, why the reader should continue, and what value they could
+          expect from the message.
+        </p>
+
+      </div>
+
+
+      <div class="audit-card">
+
+        <h3>
+          Content Hierarchy
+        </h3>
+
+        <p>
+          Emails were organized around a clear hierarchy that allowed readers
+          to scan rather than process every line of copy before understanding
+          the message.
+        </p>
+
+        <div class="flow">
+
+          Headline
+          <span class="arrow">→</span>
+          Context
+          <span class="arrow">→</span>
+          Value
+          <span class="arrow">→</span>
+          CTA
+
+        </div>
+
+      </div>
+
+
+      <div class="audit-card">
+
+        <h3>
+          CTA Optimization
+        </h3>
+
+        <p>
+          Calls-to-action became a central part of the rebuild. Rather than
+          simply placing a link inside the email, the CTA was treated as the
+          bridge between audience engagement and measurable action.
+        </p>
+
+        <ul>
+          <li>Clear and action-oriented CTA language</li>
+          <li>Strong CTA positioning within the email</li>
+          <li>Relevant CTA connected directly to the content</li>
+          <li>One clear primary action where appropriate</li>
+          <li>Reduced friction between interest and action</li>
+          <li>CTA messaging aligned with the destination page</li>
+          <li>A clear next step for the reader</li>
+        </ul>
+
+      </div>
+
+
+      <div class="strategy-quote">
+
+        <div class="quote-label">
+          Conversion Path
+        </div>
+
+        <p>
+          Email Content → CTA → Landing Page → Conversion
+        </p>
+
+      </div>
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          Annotated email screenshot showing the subject line, opening,
+          hierarchy, primary CTA, and destination path. The visual should
+          demonstrate how UX decisions support conversion.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       07 WEEKLY WORKFLOW
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">07</span>
+
+      <h2>
+        Weekly Publishing Workflow
+      </h2>
+
+      <p>
+        The campaign was operationalized through a repeatable weekly workflow.
+        This transformed email marketing from an inconsistent task into a
+        structured production system with clear stages from planning through
+        optimization.
+      </p>
+
+      <div class="flow">
+
+        Content Planning
+        <span class="arrow">→</span>
+        Topic Selection
+        <span class="arrow">→</span>
+        Copywriting
+        <span class="arrow">→</span>
+        CTA Development
+        <span class="arrow">→</span>
+        Email Build
+        <br>
+        <span class="arrow">↓</span>
+        <br>
+        Review &amp; QA
+        <span class="arrow">→</span>
+        Schedule Thursday
+        <span class="arrow">→</span>
+        Campaign Launch
+        <span class="arrow">→</span>
+        Monitoring
+        <span class="arrow">→</span>
+        Optimization
+
+      </div>
+
+
+      <div class="pillar-list">
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            01 — Content Planning
+          </div>
+
+          <div class="p-detail">
+            Determine the campaign objective, audience relevance, topic, and
+            relationship to the broader marketing calendar.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            02 — Email Development
+          </div>
+
+          <div class="p-detail">
+            Develop the subject line, copy, content hierarchy, links, and
+            primary CTA around the campaign objective.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            03 — Build &amp; QA
+          </div>
+
+          <div class="p-detail">
+            Build the email, review formatting, verify links, check CTA
+            functionality, and complete final quality assurance.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            04 — Thursday Publishing
+          </div>
+
+          <div class="p-detail">
+            Schedule and launch the campaign according to the established
+            weekly publishing rhythm.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            05 — Performance Monitoring
+          </div>
+
+          <div class="p-detail">
+            Review campaign performance and identify patterns that can inform
+            future content, CTA, and campaign decisions.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="kpi-row">
+
+        <div class="kpi">
+          <div class="k-label">Emails Sent</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Campaign Duration</div>
+          <div class="k-val">[NUMBER OF WEEKS/MONTHS]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Average / Month</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Audience Reached</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+      </div>
+
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          Show a content calendar with Thursdays highlighted, demonstrating
+          how the weekly publishing system was planned and operationalized.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       08 CONSISTENCY
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">08</span>
+
+      <h2>
+        Consistency as the Growth Strategy
+      </h2>
+
+      <p>
+        Consistency was one of the most important strategic principles behind
+        the rebuild. However, the performance improvement should not be
+        attributed to consistency alone.
+      </p>
+
+      <p>
+        A consistent publishing system created the conditions for more
+        opportunities, more data, and more informed optimization. Each weekly
+        campaign became another opportunity to understand audience behavior,
+        evaluate messaging, and refine the next campaign.
+      </p>
+
+      <div class="flow">
+
+        Consistency
+        <span class="arrow">→</span>
+        More Opportunities
+        <span class="arrow">→</span>
+        More Data
+        <span class="arrow">→</span>
+        Better Optimization
+        <span class="arrow">→</span>
+        Stronger Performance
+
+      </div>
+
+
+      <div class="pillar-list">
+
+        <div class="pillar-item">
+          <div class="p-name">More Frequent Engagement Opportunities</div>
+          <div class="p-detail">
+            Each campaign created another opportunity for the audience to read,
+            click, interact, and take action.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">More Campaign Data</div>
+          <div class="p-detail">
+            A larger number of sends creates more observations about audience
+            response and campaign behavior.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">More Opportunities to Test</div>
+          <div class="p-detail">
+            Subject lines, content angles, CTAs, and messaging can be refined
+            over repeated campaigns.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">A Stronger Communication Habit</div>
+          <div class="p-detail">
+            A recurring publishing rhythm helps establish email as an active,
+            dependable brand channel.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">More Conversion Opportunities</div>
+          <div class="p-detail">
+            Consistent campaigns create more intentional moments where readers
+            can move from engagement toward action.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       09 PERFORMANCE & OPTIMIZATION
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">09</span>
+
+      <h2>
+        Performance &amp; Optimization
+      </h2>
+
+      <p>
+        Campaign performance was monitored as an ongoing feedback loop rather
+        than treated as a final reporting exercise. Performance data was used
+        to identify what was working and inform decisions for future campaigns.
+      </p>
+
+      <div class="audit-card">
+
+        <h3>
+          Performance Signals
+        </h3>
+
+        <ul>
+          <li>Click rate</li>
+          <li>Conversion rate</li>
+          <li>Open rate</li>
+          <li>CTA performance</li>
+          <li>Individual link performance</li>
+          <li>Audience engagement</li>
+          <li>Campaign publishing consistency</li>
+        </ul>
+
+      </div>
+
+
+      <div class="kpi-row">
+
+        <div class="kpi">
+          <div class="k-label">Open Rate</div>
+          <div class="k-val">[METRIC]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Total Clicks</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Total Conversions</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Emails Sent</div>
+          <div class="k-val">[NUMBER]</div>
+        </div>
+
+        <div class="kpi">
+          <div class="k-label">Average Click Rate</div>
+          <div class="k-val">[METRIC]</div>
+        </div>
+
+      </div>
+
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          Campaign analytics screenshot showing the available performance
+          indicators. Pair the screenshot with a simple annotation explaining
+          what each metric informed.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       10 RESULTS
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">10</span>
+
+      <h2>
+        Results
+      </h2>
+
+      <p>
+        The rebuilt campaign produced measurable improvements in audience
+        click engagement and conversion. The confirmed results below represent
+        the available performance data and are intentionally presented without
+        adding unsupported baseline or volume figures.
+      </p>
+
+
+      <div class="results-grid">
+
+
+        <div class="result-card primary">
+
+          <h4>
+            Click Rate
+          </h4>
+
+          <div class="big-number">
+            +304.5%
+          </div>
+
+          <p class="result-description">
+            Growth in click rate compared with the previous benchmark,
+            demonstrating a substantial increase in audience click engagement.
+          </p>
+
+        </div>
+
+
+        <div class="result-card">
+
+          <h4>
+            Conversion Rate
+          </h4>
+
+          <div class="big-number">
+            23.3%
+          </div>
+
+          <p class="result-description">
+            The campaign achieved a 23.3% conversion rate, demonstrating that
+            email engagement was translating into measurable conversion action.
+          </p>
+
+        </div>
+
+
+        <div class="result-card">
+
+          <h4>
+            Additional KPIs
+          </h4>
+
+          <div class="r-row">
+            <span>Open Rate</span>
+            <span class="r-val">[XX%]</span>
+          </div>
+
+          <div class="r-row">
+            <span>Total Clicks</span>
+            <span class="r-val">[NUMBER]</span>
+          </div>
+
+          <div class="r-row">
+            <span>Total Conversions</span>
+            <span class="r-val">[NUMBER]</span>
+          </div>
+
+          <div class="r-row">
+            <span>Emails Published</span>
+            <span class="r-val">[NUMBER]</span>
+          </div>
+
+          <div class="r-row">
+            <span>Campaign Duration</span>
+            <span class="r-val">[NUMBER]</span>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          A clean performance graphic featuring the two confirmed KPIs:
+          +304.5% Click Rate Growth and 23.3% Conversion Rate. Additional
+          metrics can be added once verified.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       11 BEFORE VS AFTER
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">11</span>
+
+      <h2>
+        Before vs. After
+      </h2>
+
+      <div class="ba-grid">
+
+
+        <div class="ba-card">
+
+          <h4>
+            Before
+          </h4>
+
+          <ul>
+            <li>Inconsistent email publishing</li>
+            <li>Less predictable audience communication</li>
+            <li>Fewer recurring opportunities for engagement</li>
+            <li>Less structured campaign workflow</li>
+            <li>Opportunity for stronger CTA optimization</li>
+            <li>Limited consistency in campaign execution</li>
+            <li>Email not yet operating as a fully repeatable marketing system</li>
+          </ul>
+
+        </div>
+
+
+        <div class="ba-card after">
+
+          <h4>
+            After
+          </h4>
+
+          <ul>
+            <li>Weekly Thursday email campaigns</li>
+            <li>Predictable publishing schedule</li>
+            <li>Repeatable campaign workflow</li>
+            <li>More consistent audience engagement opportunities</li>
+            <li>Stronger CTA strategy</li>
+            <li>Clearer conversion focus</li>
+            <li>Data-driven optimization</li>
+            <li><strong>+304.5% click rate growth</strong></li>
+            <li><strong>23.3% conversion rate</strong></li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Suggested Visual
+        </div>
+
+        <div class="v-desc">
+          Two-column visual comparing a representative pre-rebuild email with
+          the rebuilt campaign. Highlight changes in hierarchy, CTA treatment,
+          content organization, and consistency.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       12 STRATEGIC IMPACT
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">12</span>
+
+      <h2>
+        Strategic Impact
+      </h2>
+
+      <p>
+        The value of this project was not simply publishing an email every
+        Thursday. The strategic value was creating a consistent, measurable,
+        conversion-oriented email marketing system that could be managed,
+        evaluated, and improved over time.
+      </p>
+
+      <div class="pillar-list">
+
+        <div class="pillar-item">
+          <div class="p-name">Rebuild Existing Marketing Systems</div>
+          <div class="p-detail">
+            Identify gaps in an existing campaign and redesign the system around
+            clearer strategic objectives.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Create Consistent Publishing Workflows</div>
+          <div class="p-detail">
+            Establish recurring production processes that make campaign
+            execution more predictable and sustainable.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Develop Email Content Strategy</div>
+          <div class="p-detail">
+            Balance audience value, relevance, engagement, promotional messaging,
+            and conversion objectives.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Optimize Calls-to-Action</div>
+          <div class="p-detail">
+            Connect email messaging with clear next steps and reduce friction
+            between engagement and action.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Analyze Campaign Performance</div>
+          <div class="p-detail">
+            Use performance signals to evaluate campaign effectiveness and
+            inform future optimization.
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="p-name">Connect Content With Conversion</div>
+          <div class="p-detail">
+            Treat every campaign as part of a larger customer journey rather
+            than as an isolated communication.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="strategy-quote">
+
+        <div class="quote-label">
+          Core Capability
+        </div>
+
+        <p>
+          Rebuild → Standardize → Execute → Measure → Optimize
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       13 KEY TAKEAWAYS
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">13</span>
+
+      <h2>
+        Key Takeaways
+      </h2>
+
+
+      <div class="takeaway">
+
+        <span class="t-num mono">
+          01
+        </span>
+
+        <p>
+          Consistency creates more opportunities for audience engagement and
+          gives email marketing a stronger operational foundation.
+        </p>
+
+      </div>
+
+
+      <div class="takeaway">
+
+        <span class="t-num mono">
+          02
+        </span>
+
+        <p>
+          A fixed publishing schedule can turn email from an occasional
+          communication channel into a reliable marketing asset.
+        </p>
+
+      </div>
+
+
+      <div class="takeaway">
+
+        <span class="t-num mono">
+          03
+        </span>
+
+        <p>
+          Strong, relevant CTAs help move audiences from consuming content
+          toward taking measurable action.
+        </p>
+
+      </div>
+
+
+      <div class="takeaway">
+
+        <span class="t-num mono">
+          04
+        </span>
+
+        <p>
+          Campaign performance should function as a feedback loop that informs
+          future content, messaging, and optimization decisions.
+        </p>
+
+      </div>
+
+
+      <div class="takeaway">
+
+        <span class="t-num mono">
+          05
+        </span>
+
+        <p>
+          Rebuilding a marketing system can create more long-term value than
+          simply increasing campaign volume.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       14 PORTFOLIO VISUAL RECOMMENDATIONS
+  ========================================================== -->
+
+  <section class="cs-section">
+
+    <div class="content">
+
+      <span class="num mono">14</span>
+
+      <h2>
+        Portfolio Visual Recommendations
+      </h2>
+
+      <p>
+        The strongest presentation of this case study should combine strategy
+        with visual evidence. Each supporting asset should prove a specific
+        part of the rebuild rather than simply decorate the page.
+      </p>
+
+
+      <div class="pillar-list">
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Before / After Email Screenshots
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> how the email structure, hierarchy, CTA
+            treatment, and overall user experience changed through the rebuild.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Email Campaign Builder Screenshot
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> that the project involved actual campaign
+            production, configuration, scheduling, and execution rather than
+            strategy alone.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Thursday Publishing Calendar
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> the consistency strategy and demonstrates
+            that Thursday was an intentional operational anchor.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Email Content Examples
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> the range of lifestyle, educational,
+            promotional, and conversion-oriented content used throughout the
+            campaign.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            CTA Examples
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> how CTA copy and placement were deliberately
+            designed to create a clear next step.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Campaign Analytics Screenshot
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> that campaign decisions were evaluated
+            against measurable performance data.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Click-Rate Growth Chart
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> the confirmed <strong>+304.5%</strong>
+            click-rate growth in a visually immediate way.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Conversion-Rate KPI Card
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> the confirmed <strong>23.3%</strong>
+            conversion rate and reinforces that the campaign was built around
+            measurable action, not clicks alone.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Email Workflow Diagram
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> the operational system behind the campaign,
+            from planning through publishing and optimization.
+          </div>
+
+        </div>
+
+
+        <div class="pillar-item">
+
+          <div class="p-name">
+            Before vs. After Comparison
+          </div>
+
+          <div class="p-detail">
+            <strong>Proves:</strong> the overall transformation from inconsistent
+            campaign execution to a structured, repeatable email marketing
+            system.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="visual-slot">
+
+        <div class="v-label">
+          Recommended Case Study Composition
+        </div>
+
+        <div class="v-desc">
+          Lead with one strong email screenshot, introduce the Thursday system,
+          show the workflow, demonstrate CTA and UX improvements, then finish
+          with the +304.5% click-rate growth and 23.3% conversion-rate KPIs.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       CTA
+  ========================================================== -->
+
+  <section class="cs-footer-section">
+
+    <div class="wrap">
+
+      <div class="cs-footer-cta">
+
+        <div class="inner">
+
+          <div class="eyebrow">
+            Let's work together
+          </div>
+
+          <h2>
+            Need an email marketing system that is consistent, measurable, and built to convert?
+          </h2>
+
+          <div class="cta-actions">
+
+            <a href="index.html#contact" class="btn btn-primary">
+              GET IN TOUCH →
+            </a>
+
+            <a href="index.html#work" class="btn btn-secondary">
+              VIEW MORE WORK
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <div class="mono">
+      © 2026 PETER CADIMAS
+    </div>
+
+    <a href="index.html" class="back-link">
+      ← BACK TO PORTFOLIO
+    </a>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
