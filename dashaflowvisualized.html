@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Client Journey Flowchart · Dubsado Workflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: "jarbinksregularwebfont";
+  src: url("https://static.showit.co/file/HDOqxAzGjAWpA5pLbHZzIg/334605/jar-binks-regular_1-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --main-color: #fbf9ED;
+  --second-color: #3f1521;
+  --third-color: #D7D2c4;
+  --fourth-color: #6A1B36;
+
+  --primary-mid: #8b2f49;
+  --primary-soft: #A2586d;
+  --accent-grey: #53565a;
+  --accent-red: #E0523E;
+
+  --p-color: #20211E;
+  --heading-color: #3f1521;
+
+  --font-body: "Raleway", sans-serif;
+  --font-head: "Tenor Sans", serif;
+  --font-script: "jarbinksregularwebfont", "Tenor Sans", cursive;
+
+  --rail: 32px;
+  --done-bg: color-mix(in srgb, var(--third-color) 50%, var(--main-color));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 120px; }
+body {
+  margin: 0;
+  background: var(--main-color);
+  color: var(--p-color);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: var(--font-head); color: var(--heading-color); font-weight: 400; margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--accent-red); outline-offset: 2px; border-radius: 6px; }
+
+/* ---------- Header ---------- */
+.top { max-width: 1200px; margin: 0 auto; padding: 36px 24px 18px; }
+.eyebrow {
+  font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--fourth-color); font-weight: 600; margin: 0 0 8px;
+}
+.top h1 { font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; }
+.script {
+  font-family: var(--font-script); color: var(--primary-mid);
+  font-size: clamp(22px, 3vw, 32px); margin: 6px 0 0; line-height: 1.2;
+}
+.lede { max-width: 62ch; margin: 14px 0 0; color: var(--accent-grey); }
+
+/* ---------- Toolbar ---------- */
+.toolbar {
+  background: color-mix(in srgb, var(--main-color) 94%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(63,21,33,.12);
+  border-bottom: 1px solid rgba(63,21,33,.12);
+  position: relative; z-index: 30;
+}
+@media (min-width: 760px) { .toolbar { position: sticky; top: 0; } }
+.toolbar-in {
+  max-width: 1200px; margin: 0 auto; padding: 12px 24px;
+  display: grid; gap: 12px 24px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) { .toolbar-in { grid-template-columns: minmax(260px, 1fr) auto; align-items: center; } }
+.progress-wrap { display: flex; flex-direction: column; gap: 6px; }
+.progress-text { font-size: 13px; font-weight: 600; color: var(--second-color); }
+.bar { height: 8px; border-radius: 999px; background: var(--third-color); overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--fourth-color); border-radius: 999px; transition: width .6s cubic-bezier(.4,0,.2,1); }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.seg { display: inline-flex; border: 1.5px solid var(--fourth-color); border-radius: 999px; overflow: hidden; }
+.seg button {
+  background: transparent; border: 0; padding: 7px 14px; font-size: 13px; font-weight: 600; color: var(--fourth-color);
+}
+.seg button[aria-pressed="true"] { background: var(--fourth-color); color: var(--main-color); }
+.filters {
+  grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  padding-top: 2px;
+}
+.filters .lbl { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent-grey); margin-right: 4px; }
+.chip {
+  background: var(--main-color); border: 1.5px solid rgba(63,21,33,.28); color: var(--second-color);
+  padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 1.3;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.chip[aria-pressed="true"] { background: var(--second-color); color: var(--main-color); border-color: var(--second-color); }
+.chip.approval-chip { border-style: dashed; border-color: var(--accent-red); }
+.chip.approval-chip[aria-pressed="true"] { background: var(--accent-red); color: var(--second-color); border-style: solid; border-color: var(--accent-red); }
+
+.btn {
+  background: var(--second-color); color: var(--main-color); border: 1.5px solid var(--second-color);
+  padding: 9px 18px; border-radius: 999px; font-weight: 600; font-size: 14px;
+  transition: background .2s, color .2s, border-color .2s, opacity .2s;
+}
+.btn:hover:not(:disabled) { background: var(--fourth-color); border-color: var(--fourth-color); }
+.btn.ghost { background: transparent; color: var(--second-color); }
+.btn.ghost:hover:not(:disabled) { background: var(--third-color); color: var(--second-color); border-color: var(--second-color); }
+.btn.sm { padding: 6px 12px; font-size: 12.5px; }
+.btn[aria-pressed="true"] { background: var(--fourth-color); border-color: var(--fourth-color); color: var(--main-color); }
+.btn.ghost[aria-pressed="true"] { background: var(--accent-red); border-color: var(--accent-red); color: var(--second-color); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ---------- Stage / canvas ---------- */
+.stage { max-width: 1200px; margin: 0 auto; padding: 36px 24px 40px; }
+.stage.is-horizontal { max-width: none; overflow-x: auto; padding-bottom: 56px; scrollbar-color: var(--primary-soft) var(--third-color); }
+.canvas { position: relative; }
+.canvas.view-horizontal { width: max-content; min-width: 100%; padding: 0 12px; }
+.canvas.view-vertical { max-width: 720px; margin: 0 auto; }
+#edges { position: absolute; left: 0; top: 0; z-index: 0; pointer-events: none; overflow: visible; }
+#labels { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; width: 100%; height: 100%; }
+.nodes { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: flex; }
+.view-horizontal .nodes { flex-direction: row; gap: 104px; align-items: flex-start; }
+.view-vertical .nodes { flex-direction: column; gap: 54px; }
+.slot { display: flex; flex-direction: column; }
+.view-horizontal .slot.has-branch .card.branch { margin-top: 64px; }
+.view-vertical .slot.has-branch .card.branch { margin-top: 52px; margin-left: 64px; width: calc(100% - 64px); }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--third-color);
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  padding: 15px 16px 14px;
+  position: relative;
+  box-shadow: 0 1px 0 rgba(63,21,33,.08), 0 10px 24px -16px rgba(63,21,33,.55);
+  transition: box-shadow .3s, border-color .3s, opacity .3s, background .3s, filter .3s;
+  cursor: pointer;
+}
+.view-horizontal .card { width: 276px; }
+.view-vertical .card { width: 100%; }
+.card:hover { box-shadow: 0 1px 0 rgba(63,21,33,.1), 0 14px 28px -14px rgba(63,21,33,.7); }
+.card.approval { border: 1.5px dashed var(--accent-red); }
+.card.decision { border-top: 4px solid var(--accent-red); }
+.card.st-done { background: var(--done-bg); border-color: var(--fourth-color); border-style: solid; }
+.card.st-active { box-shadow: 0 0 0 3px var(--main-color), 0 0 0 5px var(--accent-red), 0 14px 28px -14px rgba(63,21,33,.7); animation: pulse 2.4s ease-in-out infinite; }
+.card.st-blocked { opacity: .5; filter: saturate(.5); }
+.card.dim { opacity: .3; }
+.card.branch { background: var(--main-color); border: 1.5px dashed var(--accent-grey); }
+.card.branch.st-active { border-style: solid; border-color: var(--accent-red); background: var(--third-color); }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--main-color), 0 0 0 5px var(--accent-red), 0 14px 28px -14px rgba(63,21,33,.7); }
+  50% { box-shadow: 0 0 0 3px var(--main-color), 0 0 0 8px rgba(224,82,62,.35), 0 14px 28px -14px rgba(63,21,33,.7); }
+}
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.num {
+  font-family: var(--font-head); font-size: 15px; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--second-color); color: var(--main-color); display: inline-grid; place-items: center; flex: none;
+}
+.card.decision .num { border-radius: 8px; transform: rotate(45deg); }
+.card.decision .num span { transform: rotate(-45deg); display: block; }
+.where { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--accent-grey); }
+.pill {
+  margin-left: auto; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+  border: 1px solid rgba(63,21,33,.3); white-space: nowrap; color: var(--second-color);
+}
+.st-active .pill { background: var(--accent-red); border-color: var(--accent-red); color: var(--second-color); }
+.st-done .pill { background: var(--fourth-color); border-color: var(--fourth-color); color: var(--main-color); }
+.st-ended .pill { background: var(--second-color); color: var(--main-color); border-color: var(--second-color); }
+.card h3 { font-size: 19px; line-height: 1.25; }
+.card h3 .open { background: none; border: 0; padding: 0; text-align: left; font: inherit; color: inherit; }
+.card h3 .open:hover { text-decoration: underline; text-decoration-color: var(--accent-red); text-underline-offset: 4px; }
+.sum { margin: 6px 0 10px; font-size: 13.5px; color: #3a3b36; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 10px; border-radius: 999px; line-height: 1.2; border: 1.5px solid transparent;
+}
+.b-manual { background: var(--second-color); color: var(--main-color); }
+.b-email { background: var(--primary-soft); color: #fff; }
+.b-client { background: var(--accent-grey); color: #fff; }
+.b-form { background: transparent; border-color: var(--fourth-color); color: var(--fourth-color); }
+.b-status { background: var(--main-color); border-color: rgba(63,21,33,.28); color: var(--second-color); }
+.b-task { background: var(--primary-mid); color: #fff; }
+.b-handoff { background: var(--main-color); border-color: var(--accent-red); color: var(--second-color); }
+.approval-tag {
+  display: inline-block; margin-top: 10px; background: var(--accent-red); color: var(--second-color);
+  font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 6px;
+}
+.card-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.decide { display: flex; gap: 6px; flex-wrap: wrap; }
+.more { background: none; border: 0; padding: 4px 2px; font-size: 12.5px; font-weight: 700; color: var(--fourth-color); }
+.more:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Edges ---------- */
+svg .base { fill: none; stroke: var(--accent-grey); stroke-opacity: .45; stroke-width: 2; stroke-linecap: round; }
+svg .edge.alt .base { stroke: var(--accent-red); stroke-opacity: .7; stroke-dasharray: 5 6; }
+svg .fill {
+  fill: none; stroke: var(--fourth-color); stroke-width: 3.2; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .8s cubic-bezier(.4,0,.2,1);
+}
+svg .edge.active .fill { stroke-dashoffset: 0; }
+svg .edge.alt .fill { stroke: var(--accent-red); }
+svg .head { fill: var(--accent-grey); fill-opacity: .5; transition: fill .3s ease .55s, fill-opacity .3s ease .55s; }
+svg .edge.active .head { fill: var(--fourth-color); fill-opacity: 1; }
+svg .edge.alt.active .head { fill: var(--accent-red); }
+svg .edge.alt .head { fill: var(--accent-red); fill-opacity: .7; }
+svg .flow { fill: none; stroke: var(--accent-red); stroke-width: 2.6; stroke-dasharray: 4 9; stroke-linecap: round; opacity: 0; transition: opacity .3s; }
+svg .edge.next .flow { opacity: 1; animation: dash 1s linear infinite; }
+svg .edge.blocked { opacity: .3; }
+@keyframes dash { to { stroke-dashoffset: -13; } }
+
+.elabel {
+  position: absolute; font-size: 10.5px; font-weight: 700; letter-spacing: .03em; white-space: nowrap;
+  padding: 3px 9px; border-radius: 999px; background: var(--main-color);
+  border: 1.5px solid var(--primary-soft); color: var(--second-color); line-height: 1.3;
+}
+.elabel.yes { border-color: var(--accent-red); }
+.elabel.alt { border-style: dashed; border-color: var(--accent-red); }
+.elabel.blocked { opacity: .4; }
+
+/* ---------- Legend ---------- */
+.legend { max-width: 1200px; margin: 0 auto; padding: 0 24px 48px; color: var(--accent-grey); font-size: 13px; }
+.legend h2 { font-size: 20px; margin-bottom: 10px; }
+.legend ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px 28px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.legend li { display: flex; gap: 10px; align-items: center; }
+.sw { width: 34px; height: 20px; border-radius: 6px; flex: none; }
+.sw.appr { border: 1.5px dashed var(--accent-red); background: var(--third-color); }
+.sw.dec { border-top: 4px solid var(--accent-red); background: var(--third-color); }
+.sw.cur { background: var(--third-color); box-shadow: 0 0 0 2px var(--main-color), 0 0 0 4px var(--accent-red); }
+.sw.don { background: var(--done-bg); border: 1.5px solid var(--fourth-color); }
+.legend .note { margin-top: 16px; max-width: 80ch; }
+
+/* ---------- Drawer ---------- */
+.scrim { position: fixed; inset: 0; background: rgba(63,21,33,.45); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.scrim.on { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; top: 0; right: 0; height: 100vh; height: 100dvh; width: min(480px, 100vw); z-index: 100;
+  background: var(--main-color); border-left: 1px solid rgba(63,21,33,.2);
+  box-shadow: -20px 0 50px -20px rgba(63,21,33,.5);
+  display: flex; flex-direction: column;
+  transform: translateX(104%); visibility: hidden;
+  transition: transform .35s cubic-bezier(.4,0,.2,1), visibility 0s linear .35s;
+}
+.drawer.open { transform: none; visibility: visible; transition-delay: 0s; }
+.d-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(63,21,33,.15); }
+.d-head .where { font-size: 11px; }
+.d-close { background: var(--third-color); border: 0; width: 36px; height: 36px; border-radius: 50%; font-size: 20px; line-height: 1; }
+.d-close:hover { background: var(--second-color); color: var(--main-color); }
+.d-body { padding: 20px; overflow-y: auto; flex: 1; }
+.d-body h2 { font-size: 27px; line-height: 1.2; margin: 4px 0 12px; }
+.d-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 8px; }
+.d-sec { margin-top: 20px; }
+.d-sec h4 { font-family: var(--font-body); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--fourth-color); margin-bottom: 6px; }
+.d-sec p { margin: 0; }
+.d-sec ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.d-sec li.stat::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--primary-mid); margin-right: 9px; }
+.auto-kind { display: inline-flex; align-items: center; gap: 8px; }
+.auto-kind::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--accent-grey); }
+.auto-kind.k-auto::before { background: var(--primary-mid); }
+.auto-kind.k-manual::before { background: var(--second-color); }
+.auto-kind.k-approval::before { background: var(--accent-red); }
+.next-btn {
+  display: flex; width: 100%; text-align: left; gap: 10px; align-items: baseline;
+  background: var(--third-color); border: 0; border-radius: 10px; padding: 10px 12px; font-weight: 600; color: var(--second-color);
+}
+.next-btn:hover { background: var(--second-color); color: var(--main-color); }
+.next-btn small { font-weight: 600; color: var(--accent-grey); display: block; }
+.next-btn:hover small { color: var(--third-color); }
+.d-foot { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 14px 20px; border-top: 1px solid rgba(63,21,33,.15); background: var(--main-color); }
+.d-foot .spacer { flex: 1; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .top { padding-top: 28px; }
+  .stage { padding-left: 14px; padding-right: 14px; }
+  .toolbar-in { padding-left: 14px; padding-right: 14px; }
+  .legend { padding-left: 14px; padding-right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <p class="eyebrow">Dubsado Workflow</p>
+  <h1>Client Journey Flowchart</h1>
+  <p class="script">from first inquiry to booked client</p>
+  <p class="lede">Seventeen steps from a website inquiry to the Booked Clients Flow. Select a step to see its trigger and automation, and mark steps complete to light up the path.</p>
+</header>
+
+<section class="toolbar" aria-label="Flowchart controls">
+  <div class="toolbar-in">
+    <div class="progress-wrap">
+      <div class="progress-text" id="progressText" aria-live="polite">0 of 17 steps complete</div>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="17" aria-valuenow="0" aria-label="Journey progress" id="bar"><i id="barFill"></i></div>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="View">
+        <button type="button" data-view="vertical" aria-pressed="false">Vertical timeline</button>
+        <button type="button" data-view="horizontal" aria-pressed="false">Horizontal diagram</button>
+      </div>
+      <button type="button" class="btn" id="advance">Complete next step</button>
+      <button type="button" class="btn ghost" id="reset">Reset</button>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter steps by type"></div>
+  </div>
+</section>
+
+<main class="stage" id="stage">
+  <div class="canvas" id="canvas">
+    <svg id="edges" aria-hidden="true" focusable="false"></svg>
+    <div id="labels" aria-hidden="true"></div>
+    <ol class="nodes" id="nodes" aria-label="Client journey steps"></ol>
+  </div>
+</main>
+
+<section class="legend" aria-label="Legend">
+  <h2>How to read it</h2>
+  <ul>
+    <li><span class="sw appr"></span> Dashed red border: step needs approval or Dasha's assessment</li>
+    <li><span class="sw dec"></span> Red top edge and diamond: decision point</li>
+    <li><span class="sw cur"></span> Glowing ring: the current step</li>
+    <li><span class="sw don"></span> Filled card and solid arrow: completed</li>
+  </ul>
+  <p class="note">The "Not qualified" branch is a visual placeholder. The workflow brief only defines the qualified path, so no follow-up is shown for inquiries that aren't a fit.</p>
+</section>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" aria-hidden="true">
+  <div class="d-head">
+    <div><span class="where" id="dWhere"></span></div>
+    <button type="button" class="d-close" id="dClose" aria-label="Close details">&times;</button>
+  </div>
+  <div class="d-body" id="dBody"></div>
+  <div class="d-foot" id="dFoot"></div>
+</aside>
+
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------- Data ---------- */
+  var TYPES = {
+    manual:  { label: 'Manual Action (Dasha)' },
+    email:   { label: 'Automated Email' },
+    client:  { label: 'Client Action' },
+    form:    { label: 'Form / Contract' },
+    status:  { label: 'Status Update' },
+    task:    { label: 'Task Created' },
+    handoff: { label: 'Workflow Hand-Off' }
+  };
+  var APPROVAL = { send: 'Requires approval to send', assessment: "Requires Dasha's Assessment" };
+
+  var STEPS = [
+    { n: 1, title: 'Website Inquiry', where: 'External', types: ['client', 'manual'], approval: null,
+      summary: "Client submits the form on dashastone.com. It isn't connected to Dubsado, so Dasha enters the details by hand.",
+      trigger: 'Client submits a form on dashastone.com (not connected to Dubsado).',
+      action: 'Dasha manually enters the client details into Dubsado.',
+      automation: 'Manual. The website form does not sync with Dubsado.', autoKind: 'manual', statuses: [] },
+    { n: 2, title: 'Send Initial Form', where: 'Dubsado', types: ['form'], approval: null,
+      summary: 'Send the Universal Event Inquiry Form to the client.',
+      trigger: 'Follows manual entry of the inquiry in Dubsado.',
+      action: 'Send Universal Event Inquiry Form (Inquiry Form).',
+      automation: 'Automated workflow action in Dubsado.', autoKind: 'auto', statuses: [], outLabel: 'If submitted' },
+    { n: 3, title: 'Confirmation Email', where: 'Dubsado', types: ['email'], approval: null,
+      summary: 'Client gets a receipt confirmation once the inquiry form is submitted.',
+      trigger: 'If the Inquiry Form is submitted.',
+      action: 'Send Email: "We\'ve received your inquiry form!"',
+      automation: 'Automated email.', autoKind: 'auto', statuses: [] },
+    { n: 4, title: 'Add Project Tags', where: 'Dubsado', types: ['status'], approval: null,
+      summary: 'Tag the project as Wedding and Private.',
+      trigger: 'After previous actions complete.',
+      action: 'Add Project Tags: Wedding and Private.',
+      automation: 'Automated workflow action.', autoKind: 'auto', statuses: [] },
+    { n: 5, title: 'Status: New Inquiry', where: 'Dubsado', types: ['status'], approval: null,
+      summary: 'Project status moves to New Inquiry.',
+      trigger: 'After previous actions complete.',
+      action: 'Update Project Status to New Inquiry.',
+      automation: 'Automated status update.', autoKind: 'auto', statuses: ['New Inquiry'] },
+    { n: 6, title: 'Assessment Task', where: 'Dubsado', types: ['task', 'manual'], approval: 'assessment',
+      summary: 'A task prompts Dasha to check eligibility and service fit.',
+      trigger: 'Created as part of the inquiry workflow.',
+      action: 'Create Task: Evaluate Client Eligibility and Service Alignment.',
+      automation: 'Task is created automatically. The evaluation is Dasha\'s own.', autoKind: 'manual', statuses: [] },
+    { n: 7, title: 'Qualification Decision', where: 'Decision point', types: ['manual', 'status'], approval: null, decision: true,
+      summary: 'If the client qualifies, the project moves to Qualified.',
+      trigger: 'Condition: if qualified.',
+      action: 'Update Project Status to Qualified.',
+      automation: 'Dasha decides. The status change follows a qualified outcome.', autoKind: 'manual', statuses: ['Qualified'],
+      outLabel: 'If qualified' },
+    { n: 8, title: 'Consultation Scheduler', where: 'Dubsado', types: ['form'], approval: 'send',
+      summary: 'Offer the Free Consultation scheduler once Dasha approves sending it.',
+      trigger: 'Requires approval to send.',
+      action: 'Send Scheduler: Free Consultation.',
+      automation: 'Held until Dasha approves.', autoKind: 'approval', statuses: [], outLabel: 'Client books' },
+    { n: 9, title: 'Appointment Confirmation', where: 'Dubsado', types: ['client', 'email'], approval: null,
+      summary: 'Client picks a time and receives a confirmation email.',
+      trigger: 'Client submits an appointment time.',
+      action: 'Send Email: Appointment Confirmation.',
+      automation: 'Automated email, triggered by the client.', autoKind: 'auto', statuses: [] },
+    { n: 10, title: 'Status: Discovery Call Scheduled', where: 'Dubsado', types: ['status'], approval: null,
+      summary: 'Project status updates once the appointment is booked.',
+      trigger: 'After appointment booked.',
+      action: 'Update Project Status to Discovery Call Scheduled.',
+      automation: 'Automated status update.', autoKind: 'auto', statuses: ['Discovery Call Scheduled'] },
+    { n: 11, title: 'Call Preparation Task', where: 'Dubsado', types: ['task'], approval: null,
+      summary: 'A task is created for the initial consultation call.',
+      trigger: 'During call.',
+      action: 'Create Task: Initial Client Consultation Call.',
+      automation: 'Task is created automatically.', autoKind: 'auto', statuses: [] },
+    { n: 12, title: 'Status: Discovery Call Completed', where: 'Dubsado', types: ['status'], approval: null,
+      summary: 'Project status updates after the call.',
+      trigger: 'After call completion.',
+      action: 'Update Project Status to Discovery Call Completed.',
+      automation: 'Automated status update.', autoKind: 'auto', statuses: ['Discovery Call Completed'] },
+    { n: 13, title: 'Send Proposal', where: 'Dubsado', types: ['form', 'status'], approval: 'send',
+      summary: 'Send the proposal form once approved, and mark the project Proposal Sent.',
+      trigger: 'Requires approval to send.',
+      action: 'Send Form: Proposal.',
+      automation: 'Held until Dasha approves.', autoKind: 'approval', statuses: ['Proposal Sent'], outLabel: 'After review' },
+    { n: 14, title: 'Package Confirmation', where: 'Dubsado', types: ['email'], approval: null,
+      summary: 'Confirms the package the client chose.',
+      trigger: 'After proposal review.',
+      action: 'Send Email: Package Confirmation.',
+      automation: 'Automated email.', autoKind: 'auto', statuses: [] },
+    { n: 15, title: 'Agreement & Contract', where: 'Dubsado', types: ['form', 'status'], approval: 'send',
+      summary: 'Send the Event Services Agreement. Status tracks pending and signed.',
+      trigger: 'Requires approval to send.',
+      action: 'Send Contract: Event Services Agreement.',
+      automation: 'Held until Dasha approves. Signing is a client action.', autoKind: 'approval',
+      statuses: ['Contract Pending', 'Contract Signed (when the client signs)'] },
+    { n: 16, title: 'Invoice & Deposit', where: 'Dubsado', types: ['form', 'client', 'status'], approval: null,
+      summary: 'Create the $300 retainer invoice. Paying it books the client.',
+      trigger: 'Follows the signed agreement.',
+      action: 'Create Invoice: Fixed Deposit $300 Retainer.',
+      automation: 'Invoice is created automatically. Payment is a client action.', autoKind: 'auto',
+      statuses: ['Booked (when the client pays the retainer)'] },
+    { n: 17, title: 'Workflow Hand-Off', where: 'Dubsado', types: ['handoff'], approval: null,
+      summary: 'Booking is complete, so the Booked Clients Flow takes over.',
+      trigger: 'After booking completion.',
+      action: 'Initiate Booked Clients Flow.',
+      automation: 'Automated hand-off to a separate workflow.', autoKind: 'auto', statuses: [] }
+  ];
+
+  var BRANCH = { id: 'x', n: null, title: 'Not Qualified', where: 'Branch outcome', types: [], approval: null,
+    summary: 'Path ends here. No follow-up is defined for inquiries that are not a fit.',
+    trigger: 'Decision at step 7: the client is not qualified.',
+    action: 'None defined in this workflow. Add a decline email or archive step here if you use one.',
+    automation: 'Nothing automated.', autoKind: 'manual', statuses: [] };
+
+  var EDGES = [];
+  STEPS.forEach(function (s, i) {
+    if (i < STEPS.length - 1) {
+      EDGES.push({ from: s.n, to: s.n + 1, label: s.outLabel || '', yes: s.n === 7, nearEnd: s.n === 7 });
+    }
+  });
+  EDGES.push({ from: 7, to: 'x', label: 'Not qualified', alt: true });
+
+  /* ---------- State ---------- */
+  var STORE = 'dubsado-journey-v1';
+  var state = { p: 0, decision: null, view: null, filters: [] };
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (saved) {
+      if (typeof saved.p === 'number' && saved.p >= 0 && saved.p <= 17) state.p = saved.p;
+      if (saved.decision === 'not' && state.p === 6) state.decision = 'not';
+      if (saved.view === 'vertical' || saved.view === 'horizontal') state.view = saved.view;
+    }
+  } catch (e) {}
+  if (!state.view) state.view = window.innerWidth >= 980 ? 'horizontal' : 'vertical';
+
+  function save() {
+    try { localStorage.setItem(STORE, JSON.stringify({ p: state.p, decision: state.decision, view: state.view })); } catch (e) {}
+  }
+
+  var STATE_LABEL = { done: '\u2713 Completed', active: 'In progress', pending: 'Pending', blocked: 'Not reached', ended: 'Not qualified' };
+
+  function status(n) {
+    if (state.decision === 'not' && n >= 8) return 'blocked';
+    if (n <= state.p) return 'done';
+    if (n === state.p + 1) return (n === 7 && state.decision === 'not') ? 'ended' : 'active';
+    return 'pending';
+  }
+  function branchStatus() { return state.decision === 'not' ? 'active' : 'pending'; }
+  function stepById(id) { return id === 'x' ? BRANCH : STEPS[id - 1]; }
+
+  /* ---------- Build nodes ---------- */
+  var nodesEl = $('#nodes'), canvas = $('#canvas'), stage = $('#stage'), svg = $('#edges'), labelsEl = $('#labels');
+  var cards = {};
+
+  function badgesHTML(s) {
+    return s.types.map(function (t) { return '<span class="badge b-' + t + '">' + TYPES[t].label + '</span>'; }).join('');
+  }
+
+  function cardHTML(s) {
+    var pad = String(s.n).padStart(2, '0');
+    var foot;
+    if (s.decision) {
+      foot = '<div class="decide" role="group" aria-label="Qualification outcome">' +
+        '<button type="button" class="btn sm" data-act="yes" aria-pressed="false">Qualified</button>' +
+        '<button type="button" class="btn sm ghost" data-act="no" aria-pressed="false">Not qualified</button></div>';
+    } else {
+      foot = '<button type="button" class="btn sm" data-act="toggle" data-id="' + s.n + '" aria-pressed="false"></button>';
+    }
+    return '<article class="card' + (s.decision ? ' decision' : '') + (s.approval ? ' approval' : '') + '" id="step-' + s.n + '" data-id="' + s.n + '" aria-labelledby="t-' + s.n + '">' +
+      '<div class="card-top"><span class="num"><span>' + pad + '</span></span><span class="where">' + s.where + '</span><span class="pill"></span></div>' +
+      '<h3 id="t-' + s.n + '"><button type="button" class="open" data-act="open" data-id="' + s.n + '">' + s.title + '</button></h3>' +
+      '<p class="sum">' + s.summary + '</p>' +
+      '<div class="badges">' + badgesHTML(s) + '</div>' +
+      (s.approval ? '<span class="approval-tag">' + APPROVAL[s.approval] + '</span>' : '') +
+      '<div class="card-foot">' + foot + '<button type="button" class="more" data-act="open" data-id="' + s.n + '" aria-label="Details for ' + s.title + '">Details &rarr;</button></div>' +
+      '</article>';
+  }
+
+  function branchHTML() {
+    return '<article class="card branch" id="step-x" data-id="x" aria-labelledby="t-x">' +
+      '<div class="card-top"><span class="num"><span>&times;</span></span><span class="where">' + BRANCH.where + '</span><span class="pill"></span></div>' +
+      '<h3 id="t-x"><button type="button" class="open" data-act="open" data-id="x">' + BRANCH.title + '</button></h3>' +
+      '<p class="sum">' + BRANCH.summary + '</p>' +
+      '<div class="card-foot"><span></span><button type="button" class="more" data-act="open" data-id="x" aria-label="Details for Not Qualified branch">Details &rarr;</button></div>' +
+      '</article>';
+  }
+
+  nodesEl.innerHTML = STEPS.map(function (s) {
+    return '<li class="slot' + (s.n === 7 ? ' has-branch' : '') + '">' + cardHTML(s) + (s.n === 7 ? branchHTML() : '') + '</li>';
+  }).join('');
+  STEPS.concat([BRANCH]).forEach(function (s) { cards[s.id || s.n] = $('#step-' + (s.id || s.n)); });
+
+  /* ---------- Build filters ---------- */
+  var filtersEl = $('#filters');
+  filtersEl.innerHTML = '<span class="lbl">Highlight</span>' +
+    Object.keys(TYPES).map(function (k) {
+      return '<button type="button" class="chip" data-filter="' + k + '" aria-pressed="false">' + TYPES[k].label + '</button>';
+    }).join('') +
+    '<button type="button" class="chip approval-chip" data-filter="approval" aria-pressed="false">Needs approval</button>' +
+    '<button type="button" class="chip" data-filter="" id="clearFilters" hidden>Clear</button>';
+
+  /* ---------- Build edges ---------- */
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var edgeEls = EDGES.map(function (e) {
+    var g = document.createElementNS(SVGNS, 'g');
+    g.setAttribute('class', 'edge' + (e.alt ? ' alt' : ''));
+    var base = document.createElementNS(SVGNS, 'path'); base.setAttribute('class', 'base');
+    var flow = document.createElementNS(SVGNS, 'path'); flow.setAttribute('class', 'flow');
+    var fill = document.createElementNS(SVGNS, 'path'); fill.setAttribute('class', 'fill'); fill.setAttribute('pathLength', '1');
+    var head = document.createElementNS(SVGNS, 'polygon'); head.setAttribute('class', 'head');
+    g.appendChild(base); g.appendChild(flow); g.appendChild(fill); g.appendChild(head);
+    svg.appendChild(g);
+    var lab = null;
+    if (e.label) {
+      lab = document.createElement('div');
+      lab.className = 'elabel' + (e.alt ? ' alt' : '') + (e.yes ? ' yes' : '');
+      lab.textContent = e.label;
+      labelsEl.appendChild(lab);
+    }
+    return { e: e, g: g, base: base, flow: flow, fill: fill, head: head, lab: lab };
+  });
+
+  function rel(el, cr) {
+    var r = el.getBoundingClientRect();
+    return { l: r.left - cr.left, t: r.top - cr.top, r: r.right - cr.left, b: r.bottom - cr.top, w: r.width, h: r.height };
+  }
+
+  var rafId = 0;
+  function scheduleLayout() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(function () { rafId = 0; layout(); });
+  }
+
+  function layout() {
+    var cr = canvas.getBoundingClientRect();
+    var W = Math.ceil(cr.width), H = Math.ceil(cr.height);
+    svg.setAttribute('width', W); svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var vertical = state.view === 'vertical';
+    var RAIL = 32;
+
+    edgeEls.forEach(function (o) {
+      var a = rel(cards[o.e.from], cr), b = rel(cards[o.e.to], cr);
+      var d, headPts, lx, ly, lt;
+      if (b.l >= a.r - 4) {
+        // horizontal connection (right edge -> left edge)
+        var x1 = a.r + 3, y1 = a.t + Math.min(a.h / 2, 56);
+        var tx = b.l - 3, ty = b.t + Math.min(b.h / 2, 56);
+        var ex = tx - 9, k = Math.max(28, (ex - x1) * 0.5);
+        d = 'M' + x1 + ' ' + y1 + ' C' + (x1 + k) + ' ' + y1 + ',' + (ex - k) + ' ' + ty + ',' + ex + ' ' + ty;
+        headPts = tx + ',' + ty + ' ' + ex + ',' + (ty - 5.5) + ' ' + ex + ',' + (ty + 5.5);
+        lx = (x1 + 3 * (x1 + k) + 3 * (ex - k) + ex) / 8;
+        ly = (y1 + 3 * y1 + 3 * ty + ty) / 8;
+        lt = 'translate(-50%, calc(-100% - 8px))';
+      } else {
+        // vertical connection (bottom edge -> top edge)
+        var xa, xb;
+        if (vertical) {
+          xa = a.l + RAIL; xb = b.l + RAIL;
+          if (o.e.to === 'x') { xa = xb; }
+        } else {
+          xa = xb = b.l + b.w / 2;
+        }
+        var ya = a.b + 3, tyv = b.t - 3, ey = tyv - 9, kv = Math.max(24, (ey - ya) * 0.5);
+        d = 'M' + xa + ' ' + ya + ' C' + xa + ' ' + (ya + kv) + ',' + xb + ' ' + (ey - kv) + ',' + xb + ' ' + ey;
+        headPts = xb + ',' + tyv + ' ' + (xb - 5.5) + ',' + ey + ' ' + (xb + 5.5) + ',' + ey;
+        lx = (xa + xb) / 2 + 12;
+        if (o.e.nearEnd && vertical) { ly = ey - 2; lt = 'translateY(-100%)'; }
+        else { ly = (ya + ey) / 2; lt = 'translateY(-50%)'; }
+      }
+      o.base.setAttribute('d', d); o.flow.setAttribute('d', d); o.fill.setAttribute('d', d);
+      o.head.setAttribute('points', headPts);
+      if (o.lab) { o.lab.style.left = lx + 'px'; o.lab.style.top = ly + 'px'; o.lab.style.transform = lt; }
+    });
+  }
+
+  /* ---------- Update state in DOM ---------- */
+  function matchesFilter(s) {
+    if (!state.filters.length) return true;
+    return state.filters.some(function (f) { return f === 'approval' ? !!s.approval : s.types.indexOf(f) !== -1; });
+  }
+
+  function updateState() {
+    STEPS.forEach(function (s) {
+      var card = cards[s.n], st = status(s.n);
+      card.className = card.className.replace(/\bst-\w+\b/g, '').replace(/\s+/g, ' ').trim();
+      card.classList.add('st-' + st);
+      card.classList.toggle('dim', !matchesFilter(s));
+      $('.pill', card).textContent = STATE_LABEL[st];
+      if (s.decision) {
+        var yes = $('[data-act="yes"]', card), no = $('[data-act="no"]', card);
+        yes.setAttribute('aria-pressed', String(state.p >= 7));
+        no.setAttribute('aria-pressed', String(state.decision === 'not'));
+      } else {
+        var t = $('[data-act="toggle"]', card), done = st === 'done';
+        t.setAttribute('aria-pressed', String(done));
+        t.textContent = done ? '\u2713 Completed' : 'Mark complete';
+        t.disabled = st === 'blocked';
+      }
+    });
+    var bc = cards.x, bs = branchStatus();
+    bc.className = bc.className.replace(/\bst-\w+\b/g, '').replace(/\s+/g, ' ').trim();
+    bc.classList.add('st-' + bs);
+    bc.classList.toggle('dim', state.filters.length > 0);
+    $('.pill', bc).textContent = bs === 'active' ? 'Path taken' : 'Not taken';
+
+    edgeEls.forEach(function (o) {
+      var e = o.e, active, next = false, blocked = false;
+      if (e.alt) { active = state.decision === 'not'; }
+      else {
+        active = e.from <= state.p;
+        next = e.from === state.p && state.decision !== 'not';
+        blocked = state.decision === 'not' && e.from >= 7;
+      }
+      o.g.classList.toggle('active', active);
+      o.g.classList.toggle('next', next);
+      o.g.classList.toggle('blocked', blocked);
+      if (o.lab) o.lab.classList.toggle('blocked', blocked);
+    });
+
+    var total = STEPS.length;
+    $('#progressText').textContent = state.p + ' of ' + total + ' steps complete' + (state.decision === 'not' ? ' \u00b7 path ended: not qualified' : '');
+    $('#barFill').style.width = (state.p / total * 100) + '%';
+    $('#bar').setAttribute('aria-valuenow', state.p);
+    $('#advance').disabled = state.p >= total || state.decision === 'not';
+    $('#advance').title = state.decision === 'not' ? 'Choose "Qualified" on step 7 to continue the journey' : '';
+
+    $$('.chip[data-filter]', filtersEl).forEach(function (c) {
+      var f = c.getAttribute('data-filter');
+      if (f) c.setAttribute('aria-pressed', String(state.filters.indexOf(f) !== -1));
+    });
+    $('#clearFilters').hidden = !state.filters.length;
+
+    if (drawerId !== null) renderDrawer(drawerId);
+  }
+
+  function scrollToCurrent() {
+    var target = null;
+    for (var i = 1; i <= STEPS.length; i++) { if (status(i) === 'active' || status(i) === 'ended') { target = i; break; } }
+    if (state.decision === 'not') target = 'x';
+    if (target === null) target = STEPS.length;
+    var el = cards[target];
+    if (!el) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  function commit(scroll) {
+    save();
+    updateState();
+    if (scroll) scrollToCurrent();
+  }
+
+  /* ---------- Actions ---------- */
+  function toggleStep(n) {
+    if (state.decision === 'not') state.decision = null;
+    state.p = (n <= state.p) ? n - 1 : n;
+    commit(true);
+  }
+  function decide(q) {
+    if (q === 'yes') {
+      state.decision = null;
+      state.p = state.p >= 7 ? 6 : 7;
+    } else {
+      state.decision = state.decision === 'not' ? null : 'not';
+      state.p = 6;
+    }
+    commit(true);
+  }
+  function setView(v) {
+    state.view = v;
+    canvas.className = 'canvas view-' + v;
+    stage.classList.toggle('is-horizontal', v === 'horizontal');
+    $$('.seg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === v)); });
+    save();
+    scheduleLayout();
+    setTimeout(scheduleLayout, 60);
+  }
+
+  /* ---------- Drawer ---------- */
+  var drawer = $('#drawer'), scrim = $('#scrim'), dBody = $('#dBody'), dFoot = $('#dFoot'), dWhere = $('#dWhere');
+  var drawerId = null, lastFocus = null;
+
+  function stateLabelFor(id) {
+    return id === 'x' ? (branchStatus() === 'active' ? 'Path taken' : 'Not taken') : STATE_LABEL[status(id)];
+  }
+
+  function renderDrawer(id) {
+    var s = stepById(id);
+    dWhere.textContent = (s.n ? 'Step ' + s.n + ' of 17 \u00b7 ' : '') + s.where;
+    var st = id === 'x' ? branchStatus() : status(s.n);
+    var html = '<div class="d-meta"><span class="pill st-' + st + '" style="margin-left:0">' + stateLabelFor(id) + '</span>' + badgesHTML(s) + '</div>' +
+      '<h2 id="dTitle">' + s.title + '</h2>' +
+      (s.approval ? '<span class="approval-tag" style="margin-top:0">' + APPROVAL[s.approval] + '</span>' : '') +
+      '<div class="d-sec"><h4>Trigger</h4><p>' + s.trigger + '</p></div>' +
+      '<div class="d-sec"><h4>Action</h4><p>' + s.action + '</p></div>' +
+      '<div class="d-sec"><h4>Automation status</h4><p class="auto-kind k-' + s.autoKind + '">' + s.automation + '</p></div>';
+    if (s.statuses && s.statuses.length) {
+      html += '<div class="d-sec"><h4>Project status updates</h4><ul>' + s.statuses.map(function (x) { return '<li class="stat">' + x + '</li>'; }).join('') + '</ul></div>';
+    }
+    var nx = '';
+    if (s.n && s.n < 17) {
+      nx += '<button type="button" class="next-btn" data-go="' + (s.n + 1) + '"><span>' + (s.n + 1) + '</span><span>' + STEPS[s.n].title + (s.n === 7 ? '<small>If qualified</small>' : '') + '</span></button>';
+      if (s.n === 7) nx += '<button type="button" class="next-btn" data-go="x"><span>&times;</span><span>' + BRANCH.title + '<small>If not qualified</small></span></button>';
+    } else if (s.n === 17) {
+      nx += '<p>Booked Clients Flow, a separate Dubsado workflow that takes over after booking.</p>';
+    } else {
+      nx += '<p>None. This path ends here.</p>';
+    }
+    html += '<div class="d-sec"><h4>Next actions</h4><ul>' + (nx.indexOf('<p>') === 0 ? '<li>' + nx + '</li>' : nx.split('</button>').filter(Boolean).map(function (b) { return '<li>' + b + '</button></li>'; }).join('')) + '</ul></div>';
+    dBody.innerHTML = html;
+
+    var foot = '';
+    var prevId = id === 'x' ? 7 : (s.n > 1 ? s.n - 1 : null);
+    if (prevId) foot += '<button type="button" class="btn ghost sm" data-go="' + prevId + '">&larr; Previous</button>';
+    foot += '<span class="spacer"></span>';
+    if (s.decision) {
+      foot += '<button type="button" class="btn sm" data-act="yes" aria-pressed="' + (state.p >= 7) + '">Qualified</button>' +
+              '<button type="button" class="btn sm ghost" data-act="no" aria-pressed="' + (state.decision === 'not') + '">Not qualified</button>';
+    } else if (s.n) {
+      var done = status(s.n) === 'done';
+      foot += '<button type="button" class="btn sm" data-act="toggle" data-id="' + s.n + '" aria-pressed="' + done + '"' + (status(s.n) === 'blocked' ? ' disabled' : '') + '>' + (done ? '\u2713 Completed' : 'Mark complete') + '</button>';
+    }
+    if (s.n && s.n < 17) foot += '<button type="button" class="btn ghost sm" data-go="' + (s.n + 1) + '">Next &rarr;</button>';
+    dFoot.innerHTML = foot;
+  }
+
+  function openDrawer(id, trigger) {
+    if (drawerId === null) lastFocus = trigger || document.activeElement;
+    drawerId = id;
+    renderDrawer(id);
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    scrim.classList.add('on');
+    dBody.scrollTop = 0;
+    $('#dClose').focus();
+  }
+  function closeDrawer() {
+    if (drawerId === null) return;
+    drawerId = null;
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    scrim.classList.remove('on');
+    if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+  }
+
+  /* ---------- Events ---------- */
+  nodesEl.addEventListener('click', function (ev) {
+    var btn = ev.target.closest('button[data-act]');
+    var card = ev.target.closest('.card');
+    if (!card) return;
+    var id = card.getAttribute('data-id');
+    var nid = id === 'x' ? 'x' : parseInt(id, 10);
+    if (btn) {
+      var act = btn.getAttribute('data-act');
+      if (act === 'toggle') toggleStep(nid);
+      else if (act === 'yes') decide('yes');
+      else if (act === 'no') decide('no');
+      else if (act === 'open') openDrawer(nid, btn);
+      return;
+    }
+    openDrawer(nid, card.querySelector('.open'));
+  });
+
+  drawer.addEventListener('click', function (ev) {
+    var btn = ev.target.closest('button');
+    if (!btn) return;
+    if (btn.hasAttribute('data-go')) {
+      var g = btn.getAttribute('data-go');
+      var gid = g === 'x' ? 'x' : parseInt(g, 10);
+      openDrawer(gid);
+      var c = cards[gid]; if (c) c.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      return;
+    }
+    var act = btn.getAttribute('data-act');
+    if (act === 'toggle') toggleStep(drawerId);
+    else if (act === 'yes') decide('yes');
+    else if (act === 'no') decide('no');
+  });
+
+  $('#dClose').addEventListener('click', closeDrawer);
+  scrim.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function (ev) {
+    if (drawerId === null) return;
+    if (ev.key === 'Escape') { closeDrawer(); return; }
+    if (ev.key === 'Tab') {
+      var f = $$('button:not([disabled])', drawer);
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    }
+  });
+
+  $$('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () { setView(b.getAttribute('data-view')); });
+  });
+  $('#advance').addEventListener('click', function () {
+    if (state.p < STEPS.length) { state.p += 1; state.decision = null; commit(true); }
+  });
+  $('#reset').addEventListener('click', function () {
+    state.p = 0; state.decision = null; commit(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    stage.scrollTo({ left: 0, behavior: 'smooth' });
+  });
+  filtersEl.addEventListener('click', function (ev) {
+    var c = ev.target.closest('.chip');
+    if (!c) return;
+    var f = c.getAttribute('data-filter');
+    if (!f) { state.filters = []; }
+    else {
+      var i = state.filters.indexOf(f);
+      if (i === -1) state.filters.push(f); else state.filters.splice(i, 1);
+    }
+    updateState();
+  });
+
+  /* ---------- Resize handling ---------- */
+  if ('ResizeObserver' in window) {
+    var ro = new ResizeObserver(scheduleLayout);
+    ro.observe(canvas);
+    Object.keys(cards).forEach(function (k) { ro.observe(cards[k]); });
+  }
+  window.addEventListener('resize', scheduleLayout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleLayout);
+  window.addEventListener('load', scheduleLayout);
+
+  /* ---------- Init ---------- */
+  setView(state.view);
+  updateState();
+  layout();
+})();
+</script>
+</body>
+</html>
