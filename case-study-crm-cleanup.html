@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Pipeline &amp; CRM Cleanup — Case Study | Peter Cadimas</title>
+<meta name="description" content="A CRM organization, lead pipeline optimization, and sales-process improvement case study by Peter Cadimas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1220;
+    --blue:#2563EB;
+    --sky:#38BDF8;
+    --bg:#F8FAFC;
+    --slate:#334155;
+    --white:#FFFFFF;
+    --border:#E2E8F0;
+    --max:1160px;
+    --content-max:780px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope',sans-serif;
+    background:var(--bg);
+    color:var(--slate);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
+  ul{list-style:none;}
+  img{
+    max-width:100%;
+    display:block;
+  }
+  .mono{
+    font-family:'DM Mono',monospace;
+  }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+  .content{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:640px){
+    .wrap,
+    .content{
+      padding:0 20px;
+    }
+  }
+  /* ---------- utility ---------- */
+  .eyebrow{
+    font-family:'DM Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:14px;
+    height:1px;
+    background:var(--blue);
+    display:inline-block;
+  }
+  .sq{
+    width:6px;
+    height:6px;
+    background:var(--blue);
+    display:inline-block;
+    flex-shrink:0;
+  }
+  /* ---------- nav ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    min-height:90px;
+    display:flex;
+    align-items:center;
+    background:rgba(248,250,252,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    width:100%;
+    display:flex;
+    align-items:center;
+    padding:20px 0;
+  }
+  .logo{
+    font-weight:800;
+    font-size:16px;
+    letter-spacing:.02em;
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .avatar{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:var(--border);
+    border:1px solid #CBD5E1;
+    flex-shrink:0;
+  }
+  .back-link{
+    margin-left:auto;
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:color .2s;
+  }
+  .back-link:hover{
+    color:var(--blue);
+  }
+  /* ---------- hero ---------- */
+  .cs-hero{
+    padding:120px 0 100px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .cs-hero::before{
+    content:"";
+    position:absolute;
+    top:-200px;
+    right:-200px;
+    width:600px;
+    height:600px;
+    background:radial-gradient(
+      circle,
+      rgba(37,99,235,0.10) 0%,
+      rgba(56,189,248,0) 70%
+    );
+    pointer-events:none;
+  }
+  .cs-hero .content{
+    max-width:var(--content-max);
+    position:relative;
+    z-index:1;
+  }
+  .cs-hero h1{
+    font-weight:800;
+    font-size:clamp(38px,5vw,54px);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    color:var(--navy);
+    margin:22px 0 22px;
+  }
+  .cs-hero .lede{
+    font-size:18px;
+    color:var(--slate);
+    max-width:640px;
+    margin-bottom:0;
+  }
+  .cs-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:32px;
+  }
+  .cs-tag{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.04em;
+    padding:6px 12px;
+    border-radius:6px;
+    background:var(--white);
+    border:1px solid var(--border);
+    color:var(--slate);
+  }
+  .nda-note{
+    margin-top:32px;
+    font-size:13.5px;
+    line-height:1.65;
+    color:var(--slate);
+    background:var(--white);
+    border:1px solid var(--border);
+    border-left:3px solid var(--blue);
+    border-radius:8px;
+    padding:18px 20px;
+  }
+  .nda-note strong{
+    color:var(--navy);
+    font-weight:700;
+  }
+  /* ---------- snapshot ---------- */
+  .snapshot{
+    max-width:var(--content-max);
+    margin:0 auto;
+    padding:0 32px;
+    transform:translateY(-1px);
+  }
+  @media (max-width:640px){
+    .snapshot{
+      padding:0 20px;
+    }
+  }
+  .snapshot-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--border);
+    gap:1px;
+    box-shadow:0 16px 40px -30px rgba(11,18,32,0.15);
+  }
+  @media (max-width:760px){
+    .snapshot-grid{
+      grid-template-columns:repeat(2,1fr);
+    }
+  }
+  .snap-cell{
+    background:var(--white);
+    padding:20px 18px;
+  }
+  .snap-cell .label{
+    font-family:'DM Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+  .snap-cell .val{
+    font-size:14px;
+    font-weight:700;
+    color:var(--navy);
+  }
+  /* ---------- content sections ---------- */
+  .cs-section{
+    padding:110px 0;
+    border-bottom:1px solid var(--border);
+  }
+  @media (max-width:760px){
+    .cs-section{
+      padding:70px 0;
+    }
+  }
+  .cs-section:last-of-type{
+    border-bottom:none;
+  }
+  .cs-section .content{
+    max-width:var(--content-max);
+  }
+  .cs-section .num{
+    font-family:'DM Mono',monospace;
+    font-size:12px;
+    color:var(--blue);
+    margin-bottom:14px;
+    display:block;
+  }
+  .cs-section h2{
+    font-weight:700;
+    font-size:clamp(30px,4vw,46px);
+    line-height:1.15;
+    color:var(--navy);
+    letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+  .cs-section h3{
+    font-weight:700;
+    font-size:19px;
+    line-height:1.3;
+    color:var(--navy);
+    margin:32px 0 10px;
+  }
+  .cs-section p{
+    font-size:15.5px;
+    color:var(--slate);
+    margin-bottom:18px;
+  }
+  .cs-section ul{
+    margin:0 0 20px 0;
+    padding-left:20px;
+    list-style:disc;
+  }
+  .cs-section ul li{
+    font-size:15.5px;
+    color:var(--slate);
+    margin-bottom:9px;
+  }
+  blockquote{
+    font-size:16px;
+    color:var(--navy);
+    font-weight:600;
+    border-left:3px solid var(--blue);
+    padding:4px 0 4px 20px;
+    margin:24px 0;
+  }
+  /* ---------- flow ---------- */
+  .flow{
+    font-family:'DM Mono',monospace;
+    font-size:13px;
+    color:var(--navy);
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    text-align:center;
+    line-height:2.1;
+    margin:24px 0;
+  }
+  .flow .arrow{
+    color:var(--blue);
+  }
+  /* ---------- audit cards ---------- */
+  .audit-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:28px;
+    margin-bottom:20px;
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      border-color .2s ease;
+  }
+  .audit-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px -28px rgba(11,18,32,0.18);
+    border-color:#CBD5E1;
+  }
+  .audit-card h3{
+    margin-top:0;
+  }
+  .kpi-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+  .kpi{
+    border-top:1px solid var(--border);
+    padding-top:11px;
+  }
+  .kpi .k-label{
+    font-family:'DM Mono',monospace;
+    font-size:10px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .kpi .k-val{
+    font-size:16px;
+    font-weight:700;
+    color:var(--navy);
+    margin-top:4px;
+  }
+  /* ---------- pillar list ---------- */
+  .pillar-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .pillar-item{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      border-color .2s ease;
+  }
+  .pillar-item:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px -28px rgba(11,18,32,0.16);
+    border-color:#CBD5E1;
+  }
+  .pillar-item .p-name{
+    font-weight:700;
+    color:var(--navy);
+    font-size:15px;
+    margin-bottom:6px;
+  }
+  .pillar-item .p-detail{
+    font-size:14px;
+    color:var(--slate);
+  }
+  .pillar-item .p-detail strong{
+    color:var(--navy);
+  }
+  /* ---------- results ---------- */
+  .results-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+  @media (max-width:640px){
+    .results-grid{
+      grid-template-columns:1fr;
+    }
+  }
+  .result-card{
+    background:var(--navy);
+    color:var(--white);
+    border-radius:14px;
+    padding:26px;
+  }
+  .result-card h4{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--sky);
+    margin-bottom:14px;
+  }
+  .result-card .r-row{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-top:1px solid rgba(255,255,255,0.12);
+    font-size:14px;
+    gap:20px;
+  }
+  .result-card .r-row:first-of-type{
+    border-top:none;
+  }
+  .result-card .r-row .r-val{
+    font-weight:700;
+    color:var(--white);
+    text-align:right;
+  }
+  /* ---------- before after ---------- */
+  .ba-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:640px){
+    .ba-grid{
+      grid-template-columns:1fr;
+    }
+  }
+  .ba-card{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:26px;
+    background:var(--white);
+  }
+  .ba-card.after{
+    border-color:var(--blue);
+  }
+  .ba-card h4{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:14px;
+  }
+  .ba-card.after h4{
+    color:var(--blue);
+  }
+  .ba-card ul{
+    padding-left:18px;
+    margin:0;
+    list-style:disc;
+  }
+  .ba-card li{
+    font-size:14px;
+    color:var(--slate);
+    margin-bottom:9px;
+  }
+  /* ---------- takeaways ---------- */
+  .takeaway{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:20px 0;
+    border-top:1px solid var(--border);
+  }
+  .takeaway:first-of-type{
+    border-top:none;
+  }
+  .takeaway .t-num{
+    font-family:'DM Mono',monospace;
+    color:var(--blue);
+    font-size:14px;
+    flex-shrink:0;
+    width:26px;
+  }
+  .takeaway p{
+    margin:0;
+    font-size:15.5px;
+    color:var(--slate);
+  }
+  /* ---------- skills ---------- */
+  .skills-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:6px;
+  }
+  .skill-pill{
+    font-family:'DM Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.03em;
+    padding:8px 14px;
+    border-radius:8px;
+    background:var(--white);
+    border:1px solid var(--border);
+    color:var(--navy);
+  }
+  /* ---------- visual placeholder ---------- */
+  .visual-slot{
+    border:1px dashed #CBD5E1;
+    border-radius:12px;
+    background:var(--white);
+    padding:30px;
+    text-align:center;
+    margin:28px 0 0;
+  }
+  .visual-slot .v-label{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
+  .visual-slot .v-desc{
+    font-size:13.5px;
+    color:var(--slate);
+    margin-top:8px;
+    max-width:440px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .visual-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .visual-item{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 22px;
+  }
+  .visual-item .v-name{
+    font-weight:700;
+    color:var(--navy);
+    font-size:14.5px;
+    margin-bottom:6px;
+  }
+  .visual-item .v-detail{
+    font-size:13.5px;
+    color:var(--slate);
+  }
+  /* ---------- footer CTA ---------- */
+  .cs-footer-section{
+    padding:20px 0 110px;
+  }
+  @media (max-width:760px){
+    .cs-footer-section{
+      padding:10px 0 70px;
+    }
+  }
+  .cs-footer-cta{
+    background:var(--navy);
+    border-radius:28px;
+    max-width:var(--max);
+    margin:0 auto;
+    padding:90px 60px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cs-footer-cta::before{
+    content:"";
+    position:absolute;
+    bottom:-150px;
+    left:50%;
+    transform:translateX(-50%);
+    width:500px;
+    height:400px;
+    background:radial-gradient(
+      circle,
+      rgba(37,99,235,0.25),
+      rgba(56,189,248,0) 70%
+    );
+  }
+  @media (max-width:760px){
+    .cs-footer-cta{
+      padding:60px 28px;
+      border-radius:20px;
+    }
+  }
+  .cs-footer-cta .inner{
+    position:relative;
+    z-index:1;
+  }
+  .cs-footer-cta .eyebrow{
+    justify-content:center;
+    color:var(--sky);
+  }
+  .cs-footer-cta .eyebrow::before{
+    background:var(--sky);
+  }
+  .cs-footer-cta h2{
+    font-size:clamp(30px,5vw,52px);
+    line-height:1.1;
+    color:var(--white);
+    margin:20px auto 28px;
+    max-width:640px;
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    border-radius:11px;
+    font-size:14px;
+    font-weight:600;
+    font-family:'Manrope',sans-serif;
+    cursor:pointer;
+    transition:all .2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--blue);
+    color:var(--white);
+  }
+  .btn-primary:hover{
+    background:var(--sky);
+    color:var(--navy);
+  }
+  .btn-secondary{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.3);
+    color:var(--white);
+  }
+  .btn-secondary:hover{
+    background:var(--white);
+    color:var(--navy);
+  }
+  .cta-actions{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  /* ---------- footer ---------- */
+  footer.site-footer{
+    padding:0 0 40px;
+  }
+  .footer-inner{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-inner .mono{
+    font-size:12.5px;
+    color:var(--slate);
+  }
+  @media (max-width:640px){
+    .footer-inner{
+      padding:0 20px;
+    }
+  }
+  /* ---------- focus states ---------- */
+  a:focus-visible,
+  button:focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    html{
+      scroll-behavior:auto;
+    }
+    .audit-card,
+    .pillar-item{
+      transition:none;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <div class="logo">
+      <img src="PeterCadimasHeadshot.png" class="avatar" alt="Peter Cadimas">
+      PETER CADIMAS
+    </div>
+    <a href="index.html#work" class="back-link">
+      ← BACK TO WORK
+    </a>
+  </nav>
+</header>
+<main>
+  <!-- HERO -->
+  <section class="cs-hero">
+    <div class="content">
+      <div class="eyebrow">
+        CASE STUDY 04 / CRM &amp; LEAD PIPELINE OPERATIONS
+      </div>
+      <h1>
+        Lead Pipeline &amp; CRM Cleanup — building a cleaner, more actionable sales system.
+      </h1>
+      <p class="lede">
+        A six-month operational engagement transforming a real estate lead database
+        into a standardized, visible, and follow-up-ready CRM pipeline.
+      </p>
+      <div class="cs-tags">
+        <span class="cs-tag">REAL ESTATE</span>
+        <span class="cs-tag">CRM CLEANUP</span>
+        <span class="cs-tag">LEAD PIPELINE</span>
+        <span class="cs-tag">SALES OPERATIONS</span>
+        <span class="cs-tag">BREVO</span>
+      </div>
+      <div class="nda-note">
+        <strong>Client Confidentiality Notice</strong><br>
+        This project was completed for an NDA-protected client. Company name,
+        website, customer data, lead information, and revenue figures have been
+        withheld or generalized to protect confidentiality. The scope of work,
+        process, and reported figures reflect actual project data.
+      </div>
+    </div>
+  </section>
+  <!-- SNAPSHOT -->
+  <div class="snapshot">
+    <div class="snapshot-grid">
+      <div class="snap-cell">
+        <div class="label">Client</div>
+        <div class="val">NDA / Confidential</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Industry</div>
+        <div class="val">Real Estate</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">CRM</div>
+        <div class="val">Brevo</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Duration</div>
+        <div class="val">6 Months</div>
+      </div>
+      <div class="snap-cell">
+        <div class="label">Results</div>
+        <div class="val">Stronger Ops Foundation</div>
+      </div>
+    </div>
+  </div>
+  <!-- 01 OVERVIEW -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">01</span>
+      <h2>Project Overview</h2>
+      <p>
+        This project focused on transforming an existing CRM into a more
+        organized, usable, and actionable lead-management system for a
+        real estate business. The objective was not simply to organize
+        records — it was to improve the business's ability to understand
+        where leads stood, what needed attention, and what action should
+        happen next.
+      </p>
+      <p>
+        As the Customer Relationship Manager on this engagement, the scope
+        covered CRM organization, data cleanup, pipeline structuring, and
+        lead-tracking standardization within Brevo.
+      </p>
+    </div>
+  </section>
+  <!-- 02 CHALLENGE -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">02</span>
+      <h2>The Challenge</h2>
+      <p>
+        The existing CRM contained valuable lead information, but the data
+        and pipeline structure could be refined to make lead management
+        more consistent, visible, and actionable.
+      </p>
+      <ul>
+        <li>Inconsistent lead information across records</li>
+        <li>Duplicate or incomplete contact entries</li>
+        <li>Leads without clear or consistent statuses</li>
+        <li>Leads sitting in inappropriate pipeline stages</li>
+        <li>Inconsistent naming conventions</li>
+        <li>Missing contact information</li>
+        <li>Unclear ownership of individual leads</li>
+        <li>Difficulty distinguishing active leads from stale ones</li>
+        <li>Inconsistent follow-up processes</li>
+        <li>Lack of standardized CRM fields</li>
+        <li>Limited pipeline visibility for reporting</li>
+      </ul>
+      <blockquote>
+        The existing CRM contained valuable lead information, but the data
+        and pipeline structure could be refined to make lead management
+        more consistent, visible, and actionable.
+      </blockquote>
+    </div>
+  </section>
+  <!-- 03 CRM AUDIT -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">03</span>
+      <h2>CRM Audit</h2>
+      <p>
+        Before any cleanup began, the CRM was fully audited across three
+        layers: lead records, pipeline structure, and data quality.
+      </p>
+
+      <div class="audit-card">
+        <h3>Lead Records</h3>
+        <p>
+          Reviewed contact names, emails, phone numbers, company information,
+          lead source, lead status, assigned owner, notes, activity history,
+          missing information, and duplicate records.
+        </p>
+      </div>
+
+      <div class="audit-card">
+        <h3>Pipeline</h3>
+        <p>
+          Reviewed pipeline stages, leads within each stage, incorrectly
+          categorized leads, stale opportunities, leads requiring follow-up,
+          already-converted leads, and inactive leads.
+        </p>
+      </div>
+
+      <div class="audit-card">
+        <h3>Data Quality</h3>
+        <p>
+          Analyzed duplicate records, missing fields, inconsistent formatting,
+          outdated information, incomplete records, incorrect statuses, and
+          inconsistent tags or categories.
+        </p>
+      </div>
+
+      <div class="audit-card">
+        <h3>Audit Findings</h3>
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="k-label">Total Records Reviewed</div>
+            <div class="k-val">18,349</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Duplicate Records</div>
+            <div class="k-val">1,214</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Incomplete Records</div>
+            <div class="k-val">17,698</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Outdated Records</div>
+            <div class="k-val">502</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Active Leads</div>
+            <div class="k-val">12,553</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Leads Needing Follow-Up</div>
+            <div class="k-val">11,204</div>
+          </div>
+          <div class="kpi">
+            <div class="k-label">Records Standardized</div>
+            <div class="k-val">15,230</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual-slot">
+        <div class="v-label">Suggested Visual</div>
+        <div class="v-desc">
+          Redacted CRM screenshot showing the audit view — names, emails, and
+          deal values blurred or cropped out.
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 04 DATA CLEANUP -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">04</span>
+      <h2>Lead Data Cleanup</h2>
+      <p>
+        CRM records were reviewed and organized with the goal of preserving
+        valuable lead information while improving overall data quality.
+      </p>
+      <ul>
+        <li>Identifying duplicate contacts</li>
+        <li>Consolidating duplicate information into single records</li>
+        <li>Standardizing names and contact information</li>
+        <li>Correcting inconsistent entries</li>
+        <li>Updating missing information where available</li>
+        <li>Removing irrelevant records where appropriate</li>
+        <li>Identifying and separating inactive leads from active ones</li>
+        <li>Reviewing and standardizing lead sources and categories</li>
+        <li>Updating lead statuses to reflect current reality</li>
+      </ul>
+      <div class="flow">
+        Audit
+        <span class="arrow">→</span>
+        Identify Issues
+        <span class="arrow">→</span>
+        Clean
+        <span class="arrow">→</span>
+        Standardize
+        <span class="arrow">→</span>
+        Verify
+        <span class="arrow">→</span>
+        Organize
+      </div>
+    </div>
+  </section>
+  <!-- 05 PIPELINE STRUCTURE -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">05</span>
+      <h2>Pipeline Structure</h2>
+      <p>
+        The lead pipeline was reviewed and organized into clear stages that
+        represent the customer journey from first contact through conversion.
+      </p>
+      <div class="flow">
+        New Lead
+        <span class="arrow">→</span>
+        Contacted
+        <span class="arrow">→</span>
+        Qualified
+        <span class="arrow">→</span>
+        Follow-Up
+        <br>
+        <span class="arrow">→</span>
+        Appointment / Consultation
+        <span class="arrow">→</span>
+        Proposal / Opportunity
+        <span class="arrow">→</span>
+        Converted
+        <span class="arrow">→</span>
+        Closed / Lost
+      </div>
+      <p>Standardized pipeline stages were used to:</p>
+      <ul>
+        <li>Make lead status immediately visible</li>
+        <li>Identify the next required action</li>
+        <li>Reduce forgotten or overlooked leads</li>
+        <li>Improve follow-up consistency</li>
+        <li>Make reporting easier</li>
+        <li>Help prioritize opportunities</li>
+        <li>Create a consistent, repeatable sales process</li>
+      </ul>
+    </div>
+  </section>
+  <!-- 06 CATEGORIZATION -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">06</span>
+      <h2>Lead Categorization &amp; Status Standardization</h2>
+      <p>
+        Leads were categorized and assigned consistent statuses across
+        standardized CRM fields, reducing ambiguity and making the data
+        easier to understand at a glance.
+      </p>
+      <ul>
+        <li>Lead status</li>
+        <li>Lead source</li>
+        <li>Lead type</li>
+        <li>Service interest</li>
+        <li>Priority</li>
+        <li>Assigned team member</li>
+        <li>Follow-up status</li>
+        <li>Appointment status</li>
+        <li>Conversion status</li>
+      </ul>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="k-label">Custom Fields Created</div>
+          <div class="k-val">12</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Lead Categories Established</div>
+          <div class="k-val">9</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Statuses Standardized</div>
+          <div class="k-val">20</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 07 PRIORITIZATION -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">07</span>
+      <h2>Lead Prioritization</h2>
+      <p>
+        A cleaned CRM made it possible to distinguish between different
+        types of leads, helping prevent opportunities from being overlooked.
+      </p>
+      <div class="pillar-list">
+        <div class="pillar-item">
+          <div class="p-name">High Priority</div>
+          <div class="p-detail">
+            Leads requiring immediate follow-up or showing strong buying intent
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="p-name">Active</div>
+          <div class="p-detail">
+            Leads currently progressing through the pipeline
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="p-name">Follow-Up Required</div>
+          <div class="p-detail">
+            Leads that have not yet received their next required action
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="p-name">Nurture</div>
+          <div class="p-detail">
+            Leads not yet ready to convert but still valuable long-term
+          </div>
+        </div>
+        <div class="pillar-item">
+          <div class="p-name">Inactive / Closed</div>
+          <div class="p-detail">
+            Leads that no longer require active sales follow-up
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 08 WORKFLOW -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">08</span>
+      <h2>CRM Workflow</h2>
+      <p>
+        The cleaned CRM was structured to support a repeatable lead-management
+        process, creating accountability and visibility throughout the lead
+        lifecycle.
+      </p>
+      <div class="flow">
+        Lead Enters CRM
+        <span class="arrow">→</span>
+        Lead Categorized
+        <span class="arrow">→</span>
+        Lead Assigned
+        <br>
+        <span class="arrow">→</span>
+        Lead Contacted
+        <span class="arrow">→</span>
+        Status Updated
+        <span class="arrow">→</span>
+        Follow-Up Scheduled
+        <br>
+        <span class="arrow">→</span>
+        Lead Progresses
+        <span class="arrow">→</span>
+        Converted / Nurtured / Closed
+      </div>
+    </div>
+  </section>
+  <!-- 09 FOLLOW UP -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">09</span>
+      <h2>Follow-Up &amp; Lead Management</h2>
+      <p>
+        CRM cleanup directly supported better follow-up by making the state
+        of every lead visible and consistent.
+      </p>
+      <ul>
+        <li>Identifying leads requiring action</li>
+        <li>Tracking follow-up status across the pipeline</li>
+        <li>Reducing forgotten or lost leads</li>
+        <li>Making next steps visible to the team</li>
+        <li>Maintaining lead history and context</li>
+        <li>Helping team members understand lead context at a glance</li>
+      </ul>
+    </div>
+  </section>
+  <!-- 10 REPORTING -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">10</span>
+      <h2>CRM Reporting &amp; Visibility</h2>
+      <p>
+        A cleaner CRM made it easier to understand pipeline volume, lead
+        sources, conversion activity, and where bottlenecks were occurring.
+      </p>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="k-label">Total Leads</div>
+          <div class="k-val">12,312</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Active Leads</div>
+          <div class="k-val">11,356</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Qualified Leads</div>
+          <div class="k-val">11,334</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Converted Leads</div>
+          <div class="k-val">1,734</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Conversion Rate</div>
+          <div class="k-val">2.3%</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Pipeline Value</div>
+          <div class="k-val">3.2x</div>
+        </div>
+        <div class="kpi">
+          <div class="k-label">Leads Requiring Action</div>
+          <div class="k-val">10,627</div>
+        </div>
+      </div>
+      <div class="visual-slot">
+        <div class="v-label">Suggested Visual</div>
+        <div class="v-desc">
+          Reporting dashboard screenshot with sensitive information removed —
+          demonstrates improved pipeline visibility.
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 11 EXECUTION -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">11</span>
+      <h2>Execution</h2>
+      <ul>
+        <li>Conducted a full CRM audit</li>
+        <li>Reviewed the lead database for accuracy and completeness</li>
+        <li>Identified duplicate and incomplete records</li>
+        <li>Cleaned and standardized contact information</li>
+        <li>Categorized leads by status, source, and priority</li>
+        <li>Restructured pipeline stages</li>
+        <li>Created and applied custom CRM fields</li>
+        <li>Reassigned and organized lead ownership</li>
+        <li>Established a follow-up tracking process</li>
+        <li>Verified data accuracy across records</li>
+        <li>Documented the cleaned CRM structure</li>
+        <li>Improved reporting visibility for ongoing use</li>
+      </ul>
+      <p style="margin-top:28px;">
+        This work combined <strong style="color:var(--navy);">Data Management</strong>,
+        <strong style="color:var(--navy);"> Process Optimization</strong>, and
+        <strong style="color:var(--navy);"> Lead Operations</strong> into a single
+        coordinated engagement.
+      </p>
+    </div>
+  </section>
+  <!-- 12 BEFORE AFTER -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">12</span>
+      <h2>Before vs. After</h2>
+      <div class="ba-grid">
+        <div class="ba-card">
+          <h4>Before</h4>
+          <ul>
+            <li>Inconsistent records across the CRM</li>
+            <li>Unclear or missing lead statuses</li>
+            <li>Duplicate and incomplete information</li>
+            <li>Limited pipeline visibility</li>
+            <li>Leads requiring better organization</li>
+            <li>Difficulty identifying next actions</li>
+            <li>Inconsistent categorization</li>
+          </ul>
+        </div>
+        <div class="ba-card after">
+          <h4>After</h4>
+          <ul>
+            <li>Cleaner, standardized CRM database</li>
+            <li>Clearer, consistent pipeline stages</li>
+            <li>Improved lead categorization</li>
+            <li>Better lead visibility across the team</li>
+            <li>Easier follow-up management</li>
+            <li>More actionable CRM data</li>
+            <li>Stronger foundation for reporting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 13 RESULTS -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">13</span>
+      <h2>Results &amp; Metrics</h2>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <h4>CRM Data Quality</h4>
+          <div class="r-row">
+            <span>Records Reviewed</span>
+            <span class="r-val">18,349</span>
+          </div>
+          <div class="r-row">
+            <span>Records Cleaned</span>
+            <span class="r-val">3,247</span>
+          </div>
+          <div class="r-row">
+            <span>Duplicates Removed/Merged</span>
+            <span class="r-val">1,202</span>
+          </div>
+          <div class="r-row">
+            <span>Incomplete Records Corrected</span>
+            <span class="r-val">15,254</span>
+          </div>
+          <div class="r-row">
+            <span>Data Accuracy Improvement</span>
+            <span class="r-val">84%</span>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <h4>Pipeline</h4>
+          <div class="r-row">
+            <span>Active Leads</span>
+            <span class="r-val">9,263</span>
+          </div>
+          <div class="r-row">
+            <span>Leads Organized</span>
+            <span class="r-val">15,126</span>
+          </div>
+          <div class="r-row">
+            <span>Pipeline Stages Standardized</span>
+            <span class="r-val">12</span>
+          </div>
+          <div class="r-row">
+            <span>Stale Leads Identified</span>
+            <span class="r-val">13,624</span>
+          </div>
+          <div class="r-row">
+            <span>Follow-Up Leads Identified</span>
+            <span class="r-val">12,256</span>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <h4>Sales / Conversion</h4>
+          <div class="r-row">
+            <span>Qualified Leads</span>
+            <span class="r-val">1,173</span>
+          </div>
+          <div class="r-row">
+            <span>Converted Leads</span>
+            <span class="r-val">1,125</span>
+          </div>
+          <div class="r-row">
+            <span>Conversion Rate</span>
+            <span class="r-val">9%</span>
+          </div>
+          <div class="r-row">
+            <span>Conversion Improvement</span>
+            <span class="r-val">+7%</span>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <h4>Operational Efficiency</h4>
+          <div class="r-row">
+            <span>Time Saved Per CRM Review</span>
+            <span class="r-val">~1–2 hrs/day</span>
+          </div>
+          <div class="r-row">
+            <span>Manual Processes Reduced</span>
+            <span class="r-val">132 / 7.3%</span>
+          </div>
+          <div class="r-row">
+            <span>Follow-Up Consistency</span>
+            <span class="r-val">20%</span>
+          </div>
+          <div class="r-row">
+            <span>Reporting Frequency</span>
+            <span class="r-val">Monthly → Weekly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 14 STRATEGIC IMPACT -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">14</span>
+      <h2>Strategic Impact</h2>
+      <p>
+        CRM cleanup is not purely administrative work — a clean, well-structured
+        CRM becomes the foundation for nearly every downstream marketing and
+        sales function.
+      </p>
+      <ul>
+        <li>Better sales follow-up</li>
+        <li>Better marketing segmentation</li>
+        <li>More accurate reporting</li>
+        <li>Better lead prioritization</li>
+        <li>Improved customer experience</li>
+        <li>More effective automation</li>
+        <li>Better sales forecasting</li>
+        <li>Stronger marketing-to-sales alignment</li>
+      </ul>
+      <div class="flow">
+        Clean Data
+        <span class="arrow">→</span>
+        Clear Pipeline
+        <span class="arrow">→</span>
+        Better Visibility
+        <br>
+        <span class="arrow">→</span>
+        Better Follow-Up
+        <span class="arrow">→</span>
+        Better Decisions
+      </div>
+    </div>
+  </section>
+  <!-- 15 SKILLS -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">15</span>
+      <h2>Skills Demonstrated</h2>
+      <div class="skills-tags">
+        <span class="skill-pill">CRM MANAGEMENT</span>
+        <span class="skill-pill">LEAD MANAGEMENT</span>
+        <span class="skill-pill">DATA CLEANUP</span>
+        <span class="skill-pill">DATA ORGANIZATION</span>
+        <span class="skill-pill">PIPELINE MANAGEMENT</span>
+        <span class="skill-pill">SALES OPERATIONS</span>
+        <span class="skill-pill">LEAD QUALIFICATION</span>
+        <span class="skill-pill">PROCESS OPTIMIZATION</span>
+        <span class="skill-pill">DATA STANDARDIZATION</span>
+        <span class="skill-pill">REPORTING</span>
+        <span class="skill-pill">MARKETING OPERATIONS</span>
+        <span class="skill-pill">WORKFLOW DEVELOPMENT</span>
+        <span class="skill-pill">ATTENTION TO DETAIL</span>
+        <span class="skill-pill">DIGITAL MARKETING OPERATIONS</span>
+      </div>
+    </div>
+  </section>
+  <!-- 16 TAKEAWAYS -->
+  <section class="cs-section">
+    <div class="content">
+      <span class="num mono">16</span>
+      <h2>Key Takeaways</h2>
+      <div class="takeaway">
+        <span class="t-num mono">01</span>
+        <p>
+          A CRM is only as useful as the quality and structure of the data
+          inside it.
+        </p>
+      </div>
+      <div class="takeaway">
+        <span class="t-num mono">02</span>
+        <p>
+          Clear pipeline stages make lead movement easier to understand and
+          manage.
+        </p>
+      </div>
+      <div class="takeaway">
+        <span class="t-num mono">03</span>
+        <p>
+          Standardized data creates better visibility across marketing and
+          sales operations.
+        </p>
+      </div>
+      <div class="takeaway">
+        <span class="t-num mono">04</span>
+        <p>
+          CRM cleanup can reduce operational friction and improve follow-up
+          consistency.
+        </p>
+      </div>
+      <div class="takeaway">
+        <span class="t-num mono">05</span>
+        <p>
+          Organized lead data creates a stronger foundation for future
+          automation and reporting.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section class="cs-footer-section">
+    <div class="wrap">
+      <div class="cs-footer-cta">
+        <div class="inner">
+          <div class="eyebrow">
+            Let's work together
+          </div>
+          <h2>
+            Have a CRM or pipeline that needs structure? Let's clean it up.
+          </h2>
+          <div class="cta-actions">
+            <a href="index.html#contact" class="btn btn-primary">
+              GET IN TOUCH →
+            </a>
+            <a href="index.html#work" class="btn btn-secondary">
+              VIEW MORE WORK
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="mono">
+      © 2026 PETER CADIMAS
+    </div>
+    <a href="index.html" class="back-link">
+      ← BACK TO PORTFOLIO
+    </a>
+  </div>
+</footer>
+</body>
+</html>
