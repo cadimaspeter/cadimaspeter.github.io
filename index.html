@@ -9,9 +9,8 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- Separate External CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -42,24 +41,50 @@
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- HERO (Updated to Bram van Vugt / Breems layout structure) -->
     <section class="hero" id="hero">
-      <div class="wrap hero-inner">
-        <div class="eyebrow hero-eyebrow">DIGITAL MARKETING × CONTENT × TECHNOLOGY</div>
-        <h1 class="hero-title" data-split-lines>
-          I create digital experiences that help businesses show up, stand out, and <em>grow.</em>
-        </h1>
-        <p class="hero-sub">Digital Marketing &amp; Content Specialist specializing in social media, content creation, video, email marketing, web, and digital operations.</p>
-        <div class="hero-actions">
-          <a href="#work" class="btn btn-primary">
-            <span>VIEW MY WORK →</span>
-            <div class="btn-fill"></div>
-          </a>
-          <a href="#contact" class="btn btn-secondary">
-            <span>LET'S CONNECT</span>
-            <div class="btn-fill"></div>
-          </a>
+      <div class="wrap relative-hero-wrapper">
+        
+        <!-- Breems Floating CTA Button -->
+        <a button="hover" href="#contact" class="get-in-touch-button w-inline-block">
+          <div class="get-in-touch-button-link">Koffie?</div>
+          <div class="inner-hover-color"></div>
+        </a>
+
+        <div class="hero-text-grid">
+          <div class="hero-text-wrapper">
+            <div class="eyebrow hero-eyebrow">DIGITAL MARKETING × CONTENT × TECHNOLOGY</div>
+            
+            <!-- Headline with masked split-lines -->
+            <h1 data-load-animate="true" class="hero-intro-text italic">
+              <div class="line-wrap">
+                <div class="split-line">Digital Marketing &amp; Content</div>
+              </div>
+              <div class="line-wrap">
+                <div class="split-line">voor groeiende <em>bedrijven.</em></div>
+              </div>
+            </h1>
+
+            <!-- Subtitle / Tagline with masked split-line -->
+            <h2 data-load-animate="true" class="hero-intro-text hero-sub-text">
+              <div class="line-wrap">
+                <div class="split-line">Content Creation, Email Marketing &amp; Digital Operations</div>
+              </div>
+            </h2>
+
+            <div class="hero-actions">
+              <a href="#work" class="btn btn-primary">
+                <span>VIEW MY WORK →</span>
+                <div class="btn-fill"></div>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <span>LET'S CONNECT</span>
+                <div class="btn-fill"></div>
+              </a>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -307,12 +332,9 @@
     </div>
   </footer>
 
-  <!-- Animation & Smooth Scroll Libraries -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
-  <!-- Separate External JS -->
   <script src="script.js"></script>
 </body>
 </html>
