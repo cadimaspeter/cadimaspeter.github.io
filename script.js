@@ -4,7 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Register GSAP Plugins
   gsap.registerPlugin(ScrollTrigger);
 
   // -------------------------------------------------------------
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    // Edge flip detection
     if (mouseX > window.innerWidth - 120) {
       cursor.classList.add('edge-flipped');
     } else {
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Smooth cursor follow ticker
   gsap.ticker.add(() => {
     const dt = 1 - Math.pow(0.2, gsap.ticker.deltaRatio());
     cursorX += (mouseX - cursorX) * dt;
@@ -52,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.set(cursor, { x: cursorX - 45, y: cursorY - 45 });
   });
 
-  // Attach hover targets for cursor activation
   document.querySelectorAll('[data-cursor]').forEach((elem) => {
     elem.addEventListener('mouseenter', () => {
       const label = elem.getAttribute('data-cursor') || 'VIEW';
@@ -65,46 +61,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -------------------------------------------------------------
-  // 3. Masked Line Reveal (Hero Section)
+  // 3. Hero Line-Mask Slide Reveal (Breems split-line animation)
   // -------------------------------------------------------------
-  function setupLineMasks() {
-    const targets = document.querySelectorAll('[data-split-lines]');
-    
-    targets.forEach((target) => {
-      // Split element text into wrapped lines
-      const text = target.innerText;
-      const words = text.split(' ');
-      target.innerHTML = '';
-      
-      let lineWrapper = document.createElement('span');
-      lineWrapper.className = 'line-mask';
-      
-      let lineChild = document.createElement('span');
-      lineChild.className = 'line-child';
-      lineWrapper.appendChild(lineChild);
-      target.appendChild(lineWrapper);
+  function animateHeroLines() {
+    const splitLines = document.querySelectorAll('.hero .split-line');
 
-      // Simple DOM line wrapper
-      words.forEach((word) => {
-        lineChild.innerHTML += word + ' ';
-      });
+    gsap.fromTo(
+      splitLines,
+      {
+        y: '100%',
+        opacity: 0,
+      },
+      {
+        y: '0%',
+        opacity: 1,
+        duration: 1.25,
+        ease: 'cubic-bezier(0.625, 0.05, 0, 1)',
+        stagger: 0.12,
+        delay: 0.15,
+      }
+    );
 
-      // Animate lines in on load
+    // Koffie button slide-in/fade-in
+    const koffieBtn = document.querySelector('.get-in-touch-button');
+    if (koffieBtn) {
       gsap.fromTo(
-        target.querySelectorAll('.line-child'),
-        { y: '110%', opacity: 0 },
-        {
-          y: '0%',
-          opacity: 1,
-          duration: 1.2,
-          ease: 'power3.out',
-          stagger: 0.1,
-          delay: 0.2
-        }
+        koffieBtn,
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.7)', delay: 0.6 }
       );
-    });
+    }
   }
-  setupLineMasks();
+  animateHeroLines();
 
   // -------------------------------------------------------------
   // 4. Word / Heading Reveal on Scroll
